@@ -1,0 +1,6 @@
+module Pods_ArchitectureVisualization {
+  umbrella header "Pods-ArchitectureVisualization-umbrella.h"
+
+  export *
+  module * { export * }
+}
