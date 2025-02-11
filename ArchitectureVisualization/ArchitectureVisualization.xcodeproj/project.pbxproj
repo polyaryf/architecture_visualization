@@ -8,13 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		1412248197F130B1C1657D0F /* libPods-ArchitectureVisualization.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ED6B6B945180D46BD748CFC /* libPods-ArchitectureVisualization.a */; };
-		297DADEE2D2E832600C2A83A /* ArchitectureVisualizationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297DADED2D2E832600C2A83A /* ArchitectureVisualizationApp.swift */; };
-		297DADF02D2E832600C2A83A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297DADEF2D2E832600C2A83A /* ContentView.swift */; };
+		2966360B2D59178D006F7E02 /* ArchitectureVisualizationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966360A2D59178D006F7E02 /* ArchitectureVisualizationApp.swift */; };
+		2966360F2D591BA5006F7E02 /* FileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966360E2D591BA5006F7E02 /* FileNode.swift */; };
+		296636122D591BD2006F7E02 /* FileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296636112D591BD2006F7E02 /* FileLoader.swift */; };
+		296636152D591BFA006F7E02 /* FileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296636142D591BFA006F7E02 /* FileView.swift */; };
+		296636172D592D73006F7E02 /* UMLDiagramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296636162D592D73006F7E02 /* UMLDiagramView.swift */; };
+		2966361A2D5A620F006F7E02 /* UMLArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296636192D5A620F006F7E02 /* UMLArrowView.swift */; };
+		2966361C2D5A631A006F7E02 /* UMLNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966361B2D5A631A006F7E02 /* UMLNodeView.swift */; };
+		2966361E2D5A632F006F7E02 /* UMLControlPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966361D2D5A632F006F7E02 /* UMLControlPanel.swift */; };
 		297DADF22D2E832700C2A83A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 297DADF12D2E832700C2A83A /* Assets.xcassets */; };
 		297DADF52D2E832700C2A83A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 297DADF42D2E832700C2A83A /* Preview Assets.xcassets */; };
 		297DAE002D2E832700C2A83A /* ArchitectureVisualizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297DADFF2D2E832700C2A83A /* ArchitectureVisualizationTests.swift */; };
 		297DAE0A2D2E832700C2A83A /* ArchitectureVisualizationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297DAE092D2E832700C2A83A /* ArchitectureVisualizationUITests.swift */; };
 		297DAE0C2D2E832700C2A83A /* ArchitectureVisualizationUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297DAE0B2D2E832700C2A83A /* ArchitectureVisualizationUITestsLaunchTests.swift */; };
+		29E22BC32D36E4D70077DD58 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E22BC22D36E4D70077DD58 /* PerformanceTests.swift */; };
+		29E22BC52D36E5360077DD58 /* TestItemIdentifierType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E22BC42D36E5360077DD58 /* TestItemIdentifierType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +43,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2966360A2D59178D006F7E02 /* ArchitectureVisualizationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureVisualizationApp.swift; sourceTree = "<group>"; };
+		2966360E2D591BA5006F7E02 /* FileNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNode.swift; sourceTree = "<group>"; };
+		296636112D591BD2006F7E02 /* FileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLoader.swift; sourceTree = "<group>"; };
+		296636142D591BFA006F7E02 /* FileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileView.swift; sourceTree = "<group>"; };
+		296636162D592D73006F7E02 /* UMLDiagramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMLDiagramView.swift; sourceTree = "<group>"; };
+		296636192D5A620F006F7E02 /* UMLArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMLArrowView.swift; sourceTree = "<group>"; };
+		2966361B2D5A631A006F7E02 /* UMLNodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMLNodeView.swift; sourceTree = "<group>"; };
+		2966361D2D5A632F006F7E02 /* UMLControlPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMLControlPanel.swift; sourceTree = "<group>"; };
 		297DADEA2D2E832600C2A83A /* ArchitectureVisualization.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArchitectureVisualization.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		297DADED2D2E832600C2A83A /* ArchitectureVisualizationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureVisualizationApp.swift; sourceTree = "<group>"; };
-		297DADEF2D2E832600C2A83A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		297DADF12D2E832700C2A83A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		297DADF42D2E832700C2A83A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		297DADF62D2E832700C2A83A /* ArchitectureVisualization.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ArchitectureVisualization.entitlements; sourceTree = "<group>"; };
@@ -46,6 +60,8 @@
 		297DAE052D2E832700C2A83A /* ArchitectureVisualizationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArchitectureVisualizationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		297DAE092D2E832700C2A83A /* ArchitectureVisualizationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureVisualizationUITests.swift; sourceTree = "<group>"; };
 		297DAE0B2D2E832700C2A83A /* ArchitectureVisualizationUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureVisualizationUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		29E22BC22D36E4D70077DD58 /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
+		29E22BC42D36E5360077DD58 /* TestItemIdentifierType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestItemIdentifierType.swift; sourceTree = "<group>"; };
 		3ED6B6B945180D46BD748CFC /* libPods-ArchitectureVisualization.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ArchitectureVisualization.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		480D5EF9D128FAD336487886 /* Pods-ArchitectureVisualization.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureVisualization.debug.xcconfig"; path = "Target Support Files/Pods-ArchitectureVisualization/Pods-ArchitectureVisualization.debug.xcconfig"; sourceTree = "<group>"; };
 		BA28CC067435443D222141AB /* Pods-ArchitectureVisualization.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureVisualization.release.xcconfig"; path = "Target Support Files/Pods-ArchitectureVisualization/Pods-ArchitectureVisualization.release.xcconfig"; sourceTree = "<group>"; };
@@ -85,6 +101,61 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		296636052D5915EC006F7E02 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				296636102D591BC4006F7E02 /* FileLoader */,
+				296636062D5915F4006F7E02 /* App */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		296636062D5915F4006F7E02 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				2966360A2D59178D006F7E02 /* ArchitectureVisualizationApp.swift */,
+				296636232D5BDD25006F7E02 /* UML */,
+				296636132D591BF0006F7E02 /* FileView */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		2966360D2D591B97006F7E02 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2966360E2D591BA5006F7E02 /* FileNode.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		296636102D591BC4006F7E02 /* FileLoader */ = {
+			isa = PBXGroup;
+			children = (
+				296636112D591BD2006F7E02 /* FileLoader.swift */,
+				2966360D2D591B97006F7E02 /* Models */,
+			);
+			path = FileLoader;
+			sourceTree = "<group>";
+		};
+		296636132D591BF0006F7E02 /* FileView */ = {
+			isa = PBXGroup;
+			children = (
+				296636142D591BFA006F7E02 /* FileView.swift */,
+			);
+			path = FileView;
+			sourceTree = "<group>";
+		};
+		296636232D5BDD25006F7E02 /* UML */ = {
+			isa = PBXGroup;
+			children = (
+				2966361B2D5A631A006F7E02 /* UMLNodeView.swift */,
+				296636192D5A620F006F7E02 /* UMLArrowView.swift */,
+				296636162D592D73006F7E02 /* UMLDiagramView.swift */,
+				2966361D2D5A632F006F7E02 /* UMLControlPanel.swift */,
+			);
+			path = UML;
+			sourceTree = "<group>";
+		};
 		297DADE12D2E832600C2A83A = {
 			isa = PBXGroup;
 			children = (
@@ -110,8 +181,7 @@
 		297DADEC2D2E832600C2A83A /* ArchitectureVisualization */ = {
 			isa = PBXGroup;
 			children = (
-				297DADED2D2E832600C2A83A /* ArchitectureVisualizationApp.swift */,
-				297DADEF2D2E832600C2A83A /* ContentView.swift */,
+				296636052D5915EC006F7E02 /* Source */,
 				297DADF12D2E832700C2A83A /* Assets.xcassets */,
 				297DADF62D2E832700C2A83A /* ArchitectureVisualization.entitlements */,
 				297DADF32D2E832700C2A83A /* Preview Content */,
@@ -130,6 +200,7 @@
 		297DADFE2D2E832700C2A83A /* ArchitectureVisualizationTests */ = {
 			isa = PBXGroup;
 			children = (
+				29E22BC12D36E4D10077DD58 /* PerformanceTests */,
 				297DADFF2D2E832700C2A83A /* ArchitectureVisualizationTests.swift */,
 			);
 			path = ArchitectureVisualizationTests;
@@ -144,13 +215,21 @@
 			path = ArchitectureVisualizationUITests;
 			sourceTree = "<group>";
 		};
+		29E22BC12D36E4D10077DD58 /* PerformanceTests */ = {
+			isa = PBXGroup;
+			children = (
+				29E22BC22D36E4D70077DD58 /* PerformanceTests.swift */,
+				29E22BC42D36E5360077DD58 /* TestItemIdentifierType.swift */,
+			);
+			path = PerformanceTests;
+			sourceTree = "<group>";
+		};
 		82D7A580C6A8EA442376693C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				480D5EF9D128FAD336487886 /* Pods-ArchitectureVisualization.debug.xcconfig */,
 				BA28CC067435443D222141AB /* Pods-ArchitectureVisualization.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -223,6 +302,7 @@
 				TargetAttributes = {
 					297DADE92D2E832600C2A83A = {
 						CreatedOnToolsVersion = 15.1;
+						LastSwiftMigration = 1510;
 					};
 					297DADFA2D2E832700C2A83A = {
 						CreatedOnToolsVersion = 15.1;
@@ -243,6 +323,9 @@
 				Base,
 			);
 			mainGroup = 297DADE12D2E832600C2A83A;
+			packageReferences = (
+				296636182D5A5907006F7E02 /* XCRemoteSwiftPackageReference "swift-syntax" */,
+			);
 			productRefGroup = 297DADEB2D2E832600C2A83A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -310,8 +393,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				297DADF02D2E832600C2A83A /* ContentView.swift in Sources */,
-				297DADEE2D2E832600C2A83A /* ArchitectureVisualizationApp.swift in Sources */,
+				296636152D591BFA006F7E02 /* FileView.swift in Sources */,
+				296636122D591BD2006F7E02 /* FileLoader.swift in Sources */,
+				296636172D592D73006F7E02 /* UMLDiagramView.swift in Sources */,
+				2966361A2D5A620F006F7E02 /* UMLArrowView.swift in Sources */,
+				2966360B2D59178D006F7E02 /* ArchitectureVisualizationApp.swift in Sources */,
+				2966360F2D591BA5006F7E02 /* FileNode.swift in Sources */,
+				2966361C2D5A631A006F7E02 /* UMLNodeView.swift in Sources */,
+				2966361E2D5A632F006F7E02 /* UMLControlPanel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,7 +408,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29E22BC32D36E4D70077DD58 /* PerformanceTests.swift in Sources */,
 				297DAE002D2E832700C2A83A /* ArchitectureVisualizationTests.swift in Sources */,
+				29E22BC52D36E5360077DD58 /* TestItemIdentifierType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,11 +563,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ArchitectureVisualization/ArchitectureVisualization.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ArchitectureVisualization/Preview Content\"";
+				DEVELOPMENT_TEAM = ZA8S3A839R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -487,7 +581,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.itis.ArchitectureVisualization;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -498,11 +594,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ArchitectureVisualization/ArchitectureVisualization.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ArchitectureVisualization/Preview Content\"";
+				DEVELOPMENT_TEAM = ZA8S3A839R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -513,6 +612,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.itis.ArchitectureVisualization;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -626,6 +726,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		296636182D5A5907006F7E02 /* XCRemoteSwiftPackageReference "swift-syntax" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swiftlang/swift-syntax";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 600.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 297DADE22D2E832600C2A83A /* Project object */;
 }
