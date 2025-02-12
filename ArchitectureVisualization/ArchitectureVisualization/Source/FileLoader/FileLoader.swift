@@ -5,9 +5,9 @@
 //  Created by Полина Рыфтина on 10.02.2025.
 //
 
-
 import Foundation
 import AppKit
+import SwiftListTreeDataSource
 
 class FileLoader: ObservableObject {
     @Published var rootNode: FileNode?
@@ -38,22 +38,15 @@ class FileLoader: ObservableObject {
 
     private func createFileNode(from url: URL) -> FileNode {
         let fileManager = FileManager.default
-        var children: [FileNode] = []
+        let fileType = determineFileType(for: url)
 
-        if let contents = try? fileManager.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles]) {
-            for content in contents {
-                children.append(createFileNode(from: content))
-            }
+        var childrenNodes: [FileNode] = []
+
+        if fileType == .folder, let contents = try? fileManager.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles]) {
+            childrenNodes = contents.map { createFileNode(from: $0) }
         }
 
-        let fileType = determineFileType(for: url)
-        
-        return FileNode(
-            name: url.lastPathComponent,
-            isFolder: fileType == .folder ? true : false,
-            url: url,
-            children: children.isEmpty ? nil : children.sorted(by: { $0.name < $1.name })
-        )
+        return FileNode(name: url.lastPathComponent, fileType: fileType, children: childrenNodes)
     }
 
     private func determineFileType(for url: URL) -> FileType {
@@ -63,7 +56,7 @@ class FileLoader: ObservableObject {
 
         guard url.pathExtension == "swift",
               let content = try? String(contentsOf: url) else {
-            return .folder // Если файл не .swift, обрабатываем как папку (или добавить другой тип)
+            return .folder
         }
 
         if content.contains("class ") {
@@ -79,39 +72,5 @@ class FileLoader: ObservableObject {
         }
 
         return .folder
-    }
-
-    private func extractAttributes(from url: URL) -> [String] {
-        guard url.pathExtension == "swift",
-              let content = try? String(contentsOf: url) else {
-            return []
-        }
-
-        let regex = try? NSRegularExpression(pattern: "(var|let)\\s+(\\w+)", options: [])
-        let matches = regex?.matches(in: content, options: [], range: NSRange(location: 0, length: content.utf16.count)) ?? []
-
-        return matches.compactMap { match in
-            if let range = Range(match.range(at: 2), in: content) {
-                return String(content[range])
-            }
-            return nil
-        }
-    }
-
-    private func extractMethods(from url: URL) -> [String] {
-        guard url.pathExtension == "swift",
-              let content = try? String(contentsOf: url) else {
-            return []
-        }
-
-        let regex = try? NSRegularExpression(pattern: "func\\s+(\\w+)", options: [])
-        let matches = regex?.matches(in: content, options: [], range: NSRange(location: 0, length: content.utf16.count)) ?? []
-
-        return matches.compactMap { match in
-            if let range = Range(match.range(at: 1), in: content) {
-                return String(content[range]) + "()"
-            }
-            return nil
-        }
     }
 }
