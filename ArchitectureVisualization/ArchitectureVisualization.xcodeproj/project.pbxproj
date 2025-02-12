@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2966360B2D59178D006F7E02 /* ArchitectureVisualizationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966360A2D59178D006F7E02 /* ArchitectureVisualizationApp.swift */; };
-		2966360F2D591BA5006F7E02 /* FileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966360E2D591BA5006F7E02 /* FileNode.swift */; };
 		296636122D591BD2006F7E02 /* FileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296636112D591BD2006F7E02 /* FileLoader.swift */; };
 		296636152D591BFA006F7E02 /* FileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296636142D591BFA006F7E02 /* FileView.swift */; };
 		296636172D592D73006F7E02 /* UMLDiagramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296636162D592D73006F7E02 /* UMLDiagramView.swift */; };
@@ -17,12 +16,16 @@
 		2966361E2D5A632F006F7E02 /* UMLControlPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966361D2D5A632F006F7E02 /* UMLControlPanel.swift */; };
 		296636252D5C7A41006F7E02 /* FileTypeStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296636242D5C7A41006F7E02 /* FileTypeStrategy.swift */; };
 		296636292D5C839C006F7E02 /* SwiftListTreeDataSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 296636282D5C839C006F7E02 /* SwiftListTreeDataSource.framework */; };
+		2966362B2D5C9C02006F7E02 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966362A2D5C9C02006F7E02 /* Node.swift */; };
+		2966362D2D5CCC3F006F7E02 /* PodNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966362C2D5CCC3F006F7E02 /* PodNode.swift */; };
+		2966362F2D5CCD3F006F7E02 /* PodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966362E2D5CCD3F006F7E02 /* PodView.swift */; };
 		297DADF22D2E832700C2A83A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 297DADF12D2E832700C2A83A /* Assets.xcassets */; };
 		297DAE002D2E832700C2A83A /* ArchitectureVisualizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297DADFF2D2E832700C2A83A /* ArchitectureVisualizationTests.swift */; };
 		297DAE0A2D2E832700C2A83A /* ArchitectureVisualizationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297DAE092D2E832700C2A83A /* ArchitectureVisualizationUITests.swift */; };
 		297DAE0C2D2E832700C2A83A /* ArchitectureVisualizationUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297DAE0B2D2E832700C2A83A /* ArchitectureVisualizationUITestsLaunchTests.swift */; };
 		29E22BC32D36E4D70077DD58 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E22BC22D36E4D70077DD58 /* PerformanceTests.swift */; };
 		29E22BC52D36E5360077DD58 /* TestItemIdentifierType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E22BC42D36E5360077DD58 /* TestItemIdentifierType.swift */; };
+		86BE7EEDD87FDA4F1F6C1012 /* Pods_ArchitectureVisualization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1E7890C432E76DDB16D6A9 /* Pods_ArchitectureVisualization.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +47,6 @@
 
 /* Begin PBXFileReference section */
 		2966360A2D59178D006F7E02 /* ArchitectureVisualizationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureVisualizationApp.swift; sourceTree = "<group>"; };
-		2966360E2D591BA5006F7E02 /* FileNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNode.swift; sourceTree = "<group>"; };
 		296636112D591BD2006F7E02 /* FileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLoader.swift; sourceTree = "<group>"; };
 		296636142D591BFA006F7E02 /* FileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileView.swift; sourceTree = "<group>"; };
 		296636162D592D73006F7E02 /* UMLDiagramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMLDiagramView.swift; sourceTree = "<group>"; };
@@ -54,6 +56,9 @@
 		296636242D5C7A41006F7E02 /* FileTypeStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTypeStrategy.swift; sourceTree = "<group>"; };
 		296636262D5C8239006F7E02 /* SwiftListTreeDataSource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftListTreeDataSource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		296636282D5C839C006F7E02 /* SwiftListTreeDataSource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftListTreeDataSource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2966362A2D5C9C02006F7E02 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		2966362C2D5CCC3F006F7E02 /* PodNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodNode.swift; sourceTree = "<group>"; };
+		2966362E2D5CCD3F006F7E02 /* PodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodView.swift; sourceTree = "<group>"; };
 		297DADEA2D2E832600C2A83A /* ArchitectureVisualization.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArchitectureVisualization.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		297DADF12D2E832700C2A83A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		297DADF42D2E832700C2A83A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -76,6 +81,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				296636292D5C839C006F7E02 /* SwiftListTreeDataSource.framework in Frameworks */,
+				86BE7EEDD87FDA4F1F6C1012 /* Pods_ArchitectureVisualization.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,7 +126,7 @@
 			children = (
 				2966360A2D59178D006F7E02 /* ArchitectureVisualizationApp.swift */,
 				296636232D5BDD25006F7E02 /* UML */,
-				296636132D591BF0006F7E02 /* FileView */,
+				296636132D591BF0006F7E02 /* NodesView */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -128,7 +134,8 @@
 		2966360D2D591B97006F7E02 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2966360E2D591BA5006F7E02 /* FileNode.swift */,
+				2966362A2D5C9C02006F7E02 /* Node.swift */,
+				2966362C2D5CCC3F006F7E02 /* PodNode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -137,18 +144,19 @@
 			isa = PBXGroup;
 			children = (
 				296636112D591BD2006F7E02 /* FileLoader.swift */,
-				2966360D2D591B97006F7E02 /* Models */,
 				296636242D5C7A41006F7E02 /* FileTypeStrategy.swift */,
+				2966360D2D591B97006F7E02 /* Models */,
 			);
 			path = FileLoader;
 			sourceTree = "<group>";
 		};
-		296636132D591BF0006F7E02 /* FileView */ = {
+		296636132D591BF0006F7E02 /* NodesView */ = {
 			isa = PBXGroup;
 			children = (
 				296636142D591BFA006F7E02 /* FileView.swift */,
+				2966362E2D5CCD3F006F7E02 /* PodView.swift */,
 			);
-			path = FileView;
+			path = NodesView;
 			sourceTree = "<group>";
 		};
 		296636232D5BDD25006F7E02 /* UML */ = {
@@ -330,8 +338,6 @@
 				Base,
 			);
 			mainGroup = 297DADE12D2E832600C2A83A;
-			packageReferences = (
-			);
 			productRefGroup = 297DADEB2D2E832600C2A83A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -417,11 +423,13 @@
 			files = (
 				296636152D591BFA006F7E02 /* FileView.swift in Sources */,
 				296636122D591BD2006F7E02 /* FileLoader.swift in Sources */,
+				2966362F2D5CCD3F006F7E02 /* PodView.swift in Sources */,
 				296636172D592D73006F7E02 /* UMLDiagramView.swift in Sources */,
+				2966362D2D5CCC3F006F7E02 /* PodNode.swift in Sources */,
+				2966362B2D5C9C02006F7E02 /* Node.swift in Sources */,
 				2966361A2D5A620F006F7E02 /* UMLArrowView.swift in Sources */,
 				296636252D5C7A41006F7E02 /* FileTypeStrategy.swift in Sources */,
 				2966360B2D59178D006F7E02 /* ArchitectureVisualizationApp.swift in Sources */,
-				2966360F2D591BA5006F7E02 /* FileNode.swift in Sources */,
 				2966361C2D5A631A006F7E02 /* UMLNodeView.swift in Sources */,
 				2966361E2D5A632F006F7E02 /* UMLControlPanel.swift in Sources */,
 			);

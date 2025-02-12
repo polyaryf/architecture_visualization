@@ -13,15 +13,11 @@ import SwiftListTreeDataSource
 // MARK: - FileLoader
 
 class FileLoader: ObservableObject {
-    @Published var rootNode: FileNode?
+    @Published var rootNode: Node?
+    @Published var pods: [PodNode] = []
 
-    private var fileTypeStrategy: FileTypeStrategy
-    private var fileManager: FileManager
-
-    init(fileTypeStrategy: FileTypeStrategy = SwiftFileStrategy(), fileManager: FileManager = .default) {
-        self.fileTypeStrategy = fileTypeStrategy
-        self.fileManager = fileManager
-    }
+    private var fileTypeStrategy: FileTypeStrategy = SwiftFileStrategy()
+    private var fileManager: FileManager = .default
 
     func requestPermissions(completion: @escaping (Bool) -> Void) {
         let openPanel = NSOpenPanel()
@@ -40,44 +36,66 @@ class FileLoader: ObservableObject {
 
     func load(from url: URL) {
         DispatchQueue.global(qos: .userInitiated).async {
+            let podsInfo = self.parsePodfile(from: url)
             let rootNode = self.createFileNode(from: url)
+            
             DispatchQueue.main.async {
                 self.rootNode = rootNode
+                self.pods = podsInfo
             }
         }
     }
 
-    private func createFileNode(from url: URL) -> FileNode? {
-        // Если файл имеет исключаемое расширение или является папкой .pbxproj или .xcodeproj, то пропускаем его
-        if shouldExclude(url: url) {
-            return nil
-        }
+    private func createFileNode(from url: URL) -> Node? {
+        guard !shouldExclude(url: url) else { return nil }
+        guard url.lastPathComponent != "Pods" else { return nil }
+    
+        let nodeType: NodeType?
+        var swiftFileType: SwiftFileType? = nil
 
-        let fileType: FileType?
-
-        if url.hasDirectoryPath {
-            fileType = .folder
-        } else {
-            fileType = fileTypeStrategy.determineType(for: url)
-        }
-
+        url.hasDirectoryPath ? (nodeType = .folder) : (nodeType = fileTypeStrategy.determineType(for: url))
+        
         // Если файл или папка должен быть исключен, возвращаем nil
-        if fileType == nil {
-            return nil
-        }
+        guard let nodeType else { return nil }
 
-        var childrenNodes: [FileNode] = []
+        var childrenNodes: [Node] = []
 
         // Если это папка, загружаем содержимое
-        if fileType == .folder, let contents = try? fileManager.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles]) {
+        if nodeType == .folder, let contents = try? fileManager.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles]) {
             childrenNodes = contents.compactMap { createFileNode(from: $0) }
         }
+        if case NodeType.swiftFile(let type) = nodeType {
+            swiftFileType = type
+        }
 
-        return FileNode(name: url.lastPathComponent, fileType: fileType!, children: childrenNodes)
+        return Node(
+            name: url.lastPathComponent,
+            url: url,
+            nodeType: nodeType,
+            swiftFileType: swiftFileType,
+            children: childrenNodes
+        )
     }
 
-    // Проверка на файлы и папки, которые должны быть исключены
     private func shouldExclude(url: URL) -> Bool {
         return url.lastPathComponent.hasSuffix(".pbxproj") || url.lastPathComponent.hasSuffix(".xcodeproj")
+    }
+    
+    
+    private func parsePodfile(from url: URL) -> [PodNode] {
+        let podfilePath = url.appendingPathComponent("Podfile")
+        guard let content = try? String(contentsOf: podfilePath) else { return [] }
+        
+        var pods: [PodNode] = []
+        let regex = try! NSRegularExpression(pattern: #"pod\s+['"]([^'"]+)['"],?\s*['"]?([^'"]+)?['"]?"#)
+        let matches = regex.matches(in: content, range: NSRange(content.startIndex..., in: content))
+        
+        for match in matches {
+            let name = (content as NSString).substring(with: match.range(at: 1))
+            let version = match.range(at: 2).location != NSNotFound ? (content as NSString).substring(with: match.range(at: 2)) : "latest"
+            pods.append(PodNode(name: name, version: version))
+        }
+        
+        return pods
     }
 }

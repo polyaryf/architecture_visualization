@@ -7,46 +7,57 @@
 
 import Foundation
 
-/// FileType Strategy Protocol
+/// NodeType Strategy Protocol
 protocol FileTypeStrategy {
-    func determineType(for url: URL) -> FileType?
+    func determineType(for url: URL) -> NodeType?
 }
 
 class SwiftFileStrategy: FileTypeStrategy {
-    // Множество для хранения фильтров, которые мы хотим исключить
-    private let excludedExtensions: Set<String> = [".pbxproj", ".xcodeproj"]
 
-    func determineType(for url: URL) -> FileType? {
-        // Проверка на расширение, которое нужно исключить
-        if excludedExtensions.contains(url.pathExtension.lowercased()) || isXcodeProjFolder(url) {
-            return nil  // Возвращаем nil, чтобы исключить эту папку/файл
+    private let excludedExtensions: Set<String> = [
+        ".pbxproj", ".xcodeproj", ".lock", ".xcworkspace",
+    ]
+
+    func determineType(for url: URL) -> NodeType? {
+        
+        if excludedExtensions.contains(url.pathExtension.lowercased()) 
+            || isXcodeProjFolder(url)
+            || isPodFile(url)
+        {
+            return nil
         }
 
         if url.hasDirectoryPath {
             return .folder
         }
-
+       
         guard url.pathExtension == "swift", let content = try? String(contentsOf: url) else {
             return .folder
         }
 
-        if content.contains("class ") {
-            return .swiftClass
+        var swiftFileType: SwiftFileType = .unknown
+        
+        if content.contains("protocol ") {
+            swiftFileType = .protocol
         } else if content.contains("struct ") {
-            return .swiftStruct
+            swiftFileType = .struct
         } else if content.contains("enum ") {
-            return .swiftEnum
-        } else if content.contains("protocol ") {
-            return .swiftProtocol
-        } else if content.contains("import SwiftUI") && content.contains("var body: some View") {
-            return .swiftUIView
+            swiftFileType = .enum
+        } else if content.contains("class ") {
+            swiftFileType = .class
+        } else if content.contains("extension ") {
+            swiftFileType = .extension
         }
-
-        return .folder
+        
+        return .swiftFile(swiftFileType)
     }
 
-    // Функция для проверки, является ли это папка с расширением .xcodeproj
     private func isXcodeProjFolder(_ url: URL) -> Bool {
-        return url.lastPathComponent.lowercased().hasSuffix(".xcodeproj")
+        url.lastPathComponent.lowercased().hasSuffix(".xcodeproj")
+    }
+    
+    private func isPodFile(_ url: URL) -> Bool {
+        url.lastPathComponent.contains("Podfile")
+        || url.lastPathComponent.contains("Gemfile")
     }
 }
