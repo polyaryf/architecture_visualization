@@ -7,18 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		53EB0DCE68664F2B782CFC60439E6423 /* SwiftListTreeDataSource-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D802BEEC59E17E523A31FE65EBEB0F2E /* SwiftListTreeDataSource-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		7BE26F2DF70DDEE702DA86A8B3D30A91 /* Pods-ArchitectureVisualization-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E1F90A2D9C4C44D681B8C099E2DBBD /* Pods-ArchitectureVisualization-dummy.m */; };
-		97F1E95B57593D53040C2CDBC810A964 /* ListTreeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA5DCE5E167077C3953D53562B2873F /* ListTreeDataSource.swift */; };
-		9AA79E7BEBD6C75671937EDD7F908971 /* SwiftListTreeDataSource-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 869C85B273451800970FA51F1686B936 /* SwiftListTreeDataSource-dummy.m */; };
-		9AE3FC37BA6BFE87A178271F24C700E4 /* FilterableListTreeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B36A2AFB8088187BA72AD08181F1DAC /* FilterableListTreeDataSource.swift */; };
-		C3A59D18581BC5FF3F9C3FAED2A6F63D /* Queue-Optimized.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1FF3231E53D8707ADBF8E6F927B186 /* Queue-Optimized.swift */; };
-		E6AA0910D0E8F046F41D67F7B8AE75A0 /* Pods-ArchitectureVisualization-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F1A5C465DEFAA9E185A8E4D499265D7B /* Pods-ArchitectureVisualization-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		EEA7C7A5F93878ACCB1ADE8E13E61E14 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D0D95362DC008A7E1130E31C5DF1DE /* Utils.swift */; };
+		02FCA7C32B5993F761F29C4319AD95F3 /* FilterableListTreeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96627425EADD25C9CB565895B8766A5 /* FilterableListTreeDataSource.swift */; };
+		4C269169EAFBD32AA825269B202DF517 /* SwiftListTreeDataSource-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8695613D0859B26A3559B1475482B385 /* SwiftListTreeDataSource-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		58F66AAD200671E33B3D3229D7D6BB7D /* Pods-ArchitectureVisualization-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C738182B68073875C413D8459338818 /* Pods-ArchitectureVisualization-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5E7D33D874DC08DC013634ED1FDC9BE7 /* ListTreeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513B83CB6B4BC660181E274BC9FC494F /* ListTreeDataSource.swift */; };
+		9951ECB380415BE55401B166AB9F7414 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1430F003D39D9906881A6AC724B7931 /* Cocoa.framework */; };
+		BBD0876C55B33D4CA662F9BFF055FFB9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1430F003D39D9906881A6AC724B7931 /* Cocoa.framework */; };
+		CA96A024160FB036DA4FCF2BFC4020C6 /* Pods-ArchitectureVisualization-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C29017D848CB155BDC3A11505E04C01 /* Pods-ArchitectureVisualization-dummy.m */; };
+		DDAC803DBE98BCDFCD14E045973F9F8F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F592C54F262A72724B378F586791AA4 /* Utils.swift */; };
+		F5B100B29BDAAAA99193FE48C8FFC02B /* Queue-Optimized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E44DE84966A0C48BC0719ACAF187572 /* Queue-Optimized.swift */; };
+		FAF7F85C8B92ED476B667EE70F374C22 /* SwiftListTreeDataSource-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D9DB00943F969807592D33AF95FC56 /* SwiftListTreeDataSource-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		749E7A4C8943144516AFEC36C6215B1D /* PBXContainerItemProxy */ = {
+		EE8982B49C3C114EA628B92C3622B838 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -28,47 +30,78 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		08E1F90A2D9C4C44D681B8C099E2DBBD /* Pods-ArchitectureVisualization-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ArchitectureVisualization-dummy.m"; sourceTree = "<group>"; };
-		2632A1C248F337E0BDD8110B07FE7B74 /* Pods-ArchitectureVisualization.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ArchitectureVisualization.debug.xcconfig"; sourceTree = "<group>"; };
-		347458EC36FDD43F8E5FA98FB6495FF6 /* SwiftListTreeDataSource-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftListTreeDataSource-prefix.pch"; sourceTree = "<group>"; };
-		6022C0247D5C1D427B2B94252B0A51DF /* Pods-ArchitectureVisualization.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ArchitectureVisualization.release.xcconfig"; sourceTree = "<group>"; };
-		6B1BDA0AF3C4D0A4AD2BED4C82B36950 /* Pods-ArchitectureVisualization.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ArchitectureVisualization.modulemap"; sourceTree = "<group>"; };
-		6B36A2AFB8088187BA72AD08181F1DAC /* FilterableListTreeDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FilterableListTreeDataSource.swift; path = Sources/SwiftListTreeDataSource/FilterableListTreeDataSource.swift; sourceTree = "<group>"; };
-		869C85B273451800970FA51F1686B936 /* SwiftListTreeDataSource-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftListTreeDataSource-dummy.m"; sourceTree = "<group>"; };
-		8E81CB6D50074A16CB854705F08AFA90 /* SwiftListTreeDataSource.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftListTreeDataSource.debug.xcconfig; sourceTree = "<group>"; };
-		98594C2611E58130ACBE3A60C5A218CB /* Pods-ArchitectureVisualization */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "Pods-ArchitectureVisualization"; path = "libPods-ArchitectureVisualization.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		02FBE11B0F9589F183F07ECF2E52630A /* SwiftListTreeDataSource.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftListTreeDataSource.modulemap; sourceTree = "<group>"; };
+		09232016300BF3D3ECAF8732172D1D4F /* Pods-ArchitectureVisualization-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ArchitectureVisualization-frameworks.sh"; sourceTree = "<group>"; };
+		0AF42F849AC1885BAC738A4F6CC212B0 /* Pods-ArchitectureVisualization.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ArchitectureVisualization.debug.xcconfig"; sourceTree = "<group>"; };
+		0C29017D848CB155BDC3A11505E04C01 /* Pods-ArchitectureVisualization-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ArchitectureVisualization-dummy.m"; sourceTree = "<group>"; };
+		212651F12AFFD211AF6D1719BA8032C8 /* Pods-ArchitectureVisualization.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ArchitectureVisualization.modulemap"; sourceTree = "<group>"; };
+		2E44DE84966A0C48BC0719ACAF187572 /* Queue-Optimized.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Queue-Optimized.swift"; path = "Sources/SwiftListTreeDataSource/Queue-Optimized.swift"; sourceTree = "<group>"; };
+		4B43AA94E2CCC544FD1D73250CCF93B2 /* Pods-ArchitectureVisualization-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ArchitectureVisualization-Info.plist"; sourceTree = "<group>"; };
+		513B83CB6B4BC660181E274BC9FC494F /* ListTreeDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ListTreeDataSource.swift; path = Sources/SwiftListTreeDataSource/ListTreeDataSource.swift; sourceTree = "<group>"; };
+		65981659972B889765D581D7509CB960 /* Pods-ArchitectureVisualization.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ArchitectureVisualization.release.xcconfig"; sourceTree = "<group>"; };
+		71A2DD9AA314B77862A48C830E603A56 /* SwiftListTreeDataSource-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftListTreeDataSource-prefix.pch"; sourceTree = "<group>"; };
+		7C738182B68073875C413D8459338818 /* Pods-ArchitectureVisualization-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ArchitectureVisualization-umbrella.h"; sourceTree = "<group>"; };
+		8345717FDC563FD676DDE08C8C43CDDA /* SwiftListTreeDataSource.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftListTreeDataSource.debug.xcconfig; sourceTree = "<group>"; };
+		8695613D0859B26A3559B1475482B385 /* SwiftListTreeDataSource-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftListTreeDataSource-umbrella.h"; sourceTree = "<group>"; };
+		8DBE8A2CAD95E0487E6D8D08A9AE216B /* Pods-ArchitectureVisualization-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ArchitectureVisualization-acknowledgements.markdown"; sourceTree = "<group>"; };
+		8F592C54F262A72724B378F586791AA4 /* Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = Sources/SwiftListTreeDataSource/Utils.swift; sourceTree = "<group>"; };
+		98594C2611E58130ACBE3A60C5A218CB /* Pods-ArchitectureVisualization */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-ArchitectureVisualization"; path = Pods_ArchitectureVisualization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		99D9DB00943F969807592D33AF95FC56 /* SwiftListTreeDataSource-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftListTreeDataSource-dummy.m"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A3D0D95362DC008A7E1130E31C5DF1DE /* Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = Sources/SwiftListTreeDataSource/Utils.swift; sourceTree = "<group>"; };
-		A599F5FBD30C8998B9B09F01FDE3DBA5 /* Pods-ArchitectureVisualization-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ArchitectureVisualization-acknowledgements.plist"; sourceTree = "<group>"; };
-		ABA5DCE5E167077C3953D53562B2873F /* ListTreeDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ListTreeDataSource.swift; path = Sources/SwiftListTreeDataSource/ListTreeDataSource.swift; sourceTree = "<group>"; };
-		B342D85FDB94BF9CFCFA1C29DC4C4F67 /* SwiftListTreeDataSource */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = SwiftListTreeDataSource; path = libSwiftListTreeDataSource.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B6C800CEA6F396F683F7612BC8C02757 /* SwiftListTreeDataSource.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftListTreeDataSource.modulemap; sourceTree = "<group>"; };
-		D802BEEC59E17E523A31FE65EBEB0F2E /* SwiftListTreeDataSource-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftListTreeDataSource-umbrella.h"; sourceTree = "<group>"; };
-		DAAA7B128FB217D1E99F327F890ED3D8 /* Pods-ArchitectureVisualization-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ArchitectureVisualization-acknowledgements.markdown"; sourceTree = "<group>"; };
-		DF1FF3231E53D8707ADBF8E6F927B186 /* Queue-Optimized.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Queue-Optimized.swift"; path = "Sources/SwiftListTreeDataSource/Queue-Optimized.swift"; sourceTree = "<group>"; };
-		F1A5C465DEFAA9E185A8E4D499265D7B /* Pods-ArchitectureVisualization-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ArchitectureVisualization-umbrella.h"; sourceTree = "<group>"; };
-		F69F192CBB71395159674D5EE74B1A67 /* SwiftListTreeDataSource.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftListTreeDataSource.release.xcconfig; sourceTree = "<group>"; };
+		A96627425EADD25C9CB565895B8766A5 /* FilterableListTreeDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FilterableListTreeDataSource.swift; path = Sources/SwiftListTreeDataSource/FilterableListTreeDataSource.swift; sourceTree = "<group>"; };
+		B342D85FDB94BF9CFCFA1C29DC4C4F67 /* SwiftListTreeDataSource */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftListTreeDataSource; path = SwiftListTreeDataSource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B581168F62DFE69FBD7A243434C1CBA4 /* SwiftListTreeDataSource-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftListTreeDataSource-Info.plist"; sourceTree = "<group>"; };
+		B6C847880810DD4821D7C93FBFEFED16 /* Pods-ArchitectureVisualization-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ArchitectureVisualization-acknowledgements.plist"; sourceTree = "<group>"; };
+		C1430F003D39D9906881A6AC724B7931 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		EC79A9ACA13938CC5A3197C9058A4845 /* SwiftListTreeDataSource.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftListTreeDataSource.release.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8A50BA17091D4FF0189A01F4A295E506 /* Frameworks */ = {
+		2DC0AD4B1D697691D6B29CA490801049 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBD0876C55B33D4CA662F9BFF055FFB9 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FC7E40989061F85C3C6E9FB4DA3B60A8 /* Frameworks */ = {
+		7F13F950BCB60FEAB97DDF0F7AF0D91A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9951ECB380415BE55401B166AB9F7414 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1DB48492D6E42854BD1FDAD283E6EE66 /* Products */ = {
+		05C820C46CFC30B1833E13D06ED4A379 /* Pods-ArchitectureVisualization */ = {
+			isa = PBXGroup;
+			children = (
+				212651F12AFFD211AF6D1719BA8032C8 /* Pods-ArchitectureVisualization.modulemap */,
+				8DBE8A2CAD95E0487E6D8D08A9AE216B /* Pods-ArchitectureVisualization-acknowledgements.markdown */,
+				B6C847880810DD4821D7C93FBFEFED16 /* Pods-ArchitectureVisualization-acknowledgements.plist */,
+				0C29017D848CB155BDC3A11505E04C01 /* Pods-ArchitectureVisualization-dummy.m */,
+				09232016300BF3D3ECAF8732172D1D4F /* Pods-ArchitectureVisualization-frameworks.sh */,
+				4B43AA94E2CCC544FD1D73250CCF93B2 /* Pods-ArchitectureVisualization-Info.plist */,
+				7C738182B68073875C413D8459338818 /* Pods-ArchitectureVisualization-umbrella.h */,
+				0AF42F849AC1885BAC738A4F6CC212B0 /* Pods-ArchitectureVisualization.debug.xcconfig */,
+				65981659972B889765D581D7509CB960 /* Pods-ArchitectureVisualization.release.xcconfig */,
+			);
+			name = "Pods-ArchitectureVisualization";
+			path = "Target Support Files/Pods-ArchitectureVisualization";
+			sourceTree = "<group>";
+		};
+		142F051AC5F9ED3FCC28FAF41D44AB93 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				05C820C46CFC30B1833E13D06ED4A379 /* Pods-ArchitectureVisualization */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		543E860939D692493C3279164045A8C5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				98594C2611E58130ACBE3A60C5A218CB /* Pods-ArchitectureVisualization */,
@@ -77,60 +110,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3685BC3FCB9EB0D447837D1A674105AF /* SwiftListTreeDataSource */ = {
-			isa = PBXGroup;
-			children = (
-				6B36A2AFB8088187BA72AD08181F1DAC /* FilterableListTreeDataSource.swift */,
-				ABA5DCE5E167077C3953D53562B2873F /* ListTreeDataSource.swift */,
-				DF1FF3231E53D8707ADBF8E6F927B186 /* Queue-Optimized.swift */,
-				A3D0D95362DC008A7E1130E31C5DF1DE /* Utils.swift */,
-				99F52529764B020803F0E9470A8B7FD6 /* Support Files */,
-			);
-			name = SwiftListTreeDataSource;
-			path = SwiftListTreeDataSource;
-			sourceTree = "<group>";
-		};
-		61363B8A6B13952373174AB294F40840 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				63B9858E69FE43FE9BAAA8C973858FE7 /* Pods-ArchitectureVisualization */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		63B9858E69FE43FE9BAAA8C973858FE7 /* Pods-ArchitectureVisualization */ = {
-			isa = PBXGroup;
-			children = (
-				6B1BDA0AF3C4D0A4AD2BED4C82B36950 /* Pods-ArchitectureVisualization.modulemap */,
-				DAAA7B128FB217D1E99F327F890ED3D8 /* Pods-ArchitectureVisualization-acknowledgements.markdown */,
-				A599F5FBD30C8998B9B09F01FDE3DBA5 /* Pods-ArchitectureVisualization-acknowledgements.plist */,
-				08E1F90A2D9C4C44D681B8C099E2DBBD /* Pods-ArchitectureVisualization-dummy.m */,
-				F1A5C465DEFAA9E185A8E4D499265D7B /* Pods-ArchitectureVisualization-umbrella.h */,
-				2632A1C248F337E0BDD8110B07FE7B74 /* Pods-ArchitectureVisualization.debug.xcconfig */,
-				6022C0247D5C1D427B2B94252B0A51DF /* Pods-ArchitectureVisualization.release.xcconfig */,
-			);
-			name = "Pods-ArchitectureVisualization";
-			path = "Target Support Files/Pods-ArchitectureVisualization";
-			sourceTree = "<group>";
-		};
-		99F52529764B020803F0E9470A8B7FD6 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				B6C800CEA6F396F683F7612BC8C02757 /* SwiftListTreeDataSource.modulemap */,
-				869C85B273451800970FA51F1686B936 /* SwiftListTreeDataSource-dummy.m */,
-				347458EC36FDD43F8E5FA98FB6495FF6 /* SwiftListTreeDataSource-prefix.pch */,
-				D802BEEC59E17E523A31FE65EBEB0F2E /* SwiftListTreeDataSource-umbrella.h */,
-				8E81CB6D50074A16CB854705F08AFA90 /* SwiftListTreeDataSource.debug.xcconfig */,
-				F69F192CBB71395159674D5EE74B1A67 /* SwiftListTreeDataSource.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/SwiftListTreeDataSource";
-			sourceTree = "<group>";
-		};
 		CC5571466091DAB8A40DB7611A227A95 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3685BC3FCB9EB0D447837D1A674105AF /* SwiftListTreeDataSource */,
+				E4691E1B8AD0FBD90510195D05B1B4E1 /* SwiftListTreeDataSource */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -139,36 +122,73 @@
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				D89477F20FB1DE18A04690586D7808C4 /* Frameworks */,
+				E0A1E60606E0BF6E2E10F1F01350DFE8 /* Frameworks */,
 				CC5571466091DAB8A40DB7611A227A95 /* Pods */,
-				1DB48492D6E42854BD1FDAD283E6EE66 /* Products */,
-				61363B8A6B13952373174AB294F40840 /* Targets Support Files */,
+				543E860939D692493C3279164045A8C5 /* Products */,
+				142F051AC5F9ED3FCC28FAF41D44AB93 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		D89477F20FB1DE18A04690586D7808C4 /* Frameworks */ = {
+		D57E43E0B6A8BEB733505BEB9B10BE7D /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				02FBE11B0F9589F183F07ECF2E52630A /* SwiftListTreeDataSource.modulemap */,
+				99D9DB00943F969807592D33AF95FC56 /* SwiftListTreeDataSource-dummy.m */,
+				B581168F62DFE69FBD7A243434C1CBA4 /* SwiftListTreeDataSource-Info.plist */,
+				71A2DD9AA314B77862A48C830E603A56 /* SwiftListTreeDataSource-prefix.pch */,
+				8695613D0859B26A3559B1475482B385 /* SwiftListTreeDataSource-umbrella.h */,
+				8345717FDC563FD676DDE08C8C43CDDA /* SwiftListTreeDataSource.debug.xcconfig */,
+				EC79A9ACA13938CC5A3197C9058A4845 /* SwiftListTreeDataSource.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftListTreeDataSource";
+			sourceTree = "<group>";
+		};
+		E0A1E60606E0BF6E2E10F1F01350DFE8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E2A8756CA1FF5258A0344D53C5C60EC1 /* OS X */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E2A8756CA1FF5258A0344D53C5C60EC1 /* OS X */ = {
+			isa = PBXGroup;
+			children = (
+				C1430F003D39D9906881A6AC724B7931 /* Cocoa.framework */,
+			);
+			name = "OS X";
+			sourceTree = "<group>";
+		};
+		E4691E1B8AD0FBD90510195D05B1B4E1 /* SwiftListTreeDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				A96627425EADD25C9CB565895B8766A5 /* FilterableListTreeDataSource.swift */,
+				513B83CB6B4BC660181E274BC9FC494F /* ListTreeDataSource.swift */,
+				2E44DE84966A0C48BC0719ACAF187572 /* Queue-Optimized.swift */,
+				8F592C54F262A72724B378F586791AA4 /* Utils.swift */,
+				D57E43E0B6A8BEB733505BEB9B10BE7D /* Support Files */,
+			);
+			name = SwiftListTreeDataSource;
+			path = SwiftListTreeDataSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		2E086A4632A479B6497774621E4FB4FD /* Headers */ = {
+		185B96F1CB9022FC2430EB0425B2F1CC /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6AA0910D0E8F046F41D67F7B8AE75A0 /* Pods-ArchitectureVisualization-umbrella.h in Headers */,
+				4C269169EAFBD32AA825269B202DF517 /* SwiftListTreeDataSource-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		71033C5BAF50CE85DE8602CD77471692 /* Headers */ = {
+		7D7DA2F9B43C11423731B1F06D9E4873 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53EB0DCE68664F2B782CFC60439E6423 /* SwiftListTreeDataSource-umbrella.h in Headers */,
+				58F66AAD200671E33B3D3229D7D6BB7D /* Pods-ArchitectureVisualization-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,12 +197,12 @@
 /* Begin PBXNativeTarget section */
 		135C7C7DD8FBBAE48C26D57107271F2D /* SwiftListTreeDataSource */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7254B97CE253B48536E102A8A73143FE /* Build configuration list for PBXNativeTarget "SwiftListTreeDataSource" */;
+			buildConfigurationList = A10F54DBC74DD7958A35F077483BA957 /* Build configuration list for PBXNativeTarget "SwiftListTreeDataSource" */;
 			buildPhases = (
-				71033C5BAF50CE85DE8602CD77471692 /* Headers */,
-				978CEE9A68E842BD25B58830832CF8C8 /* Sources */,
-				8A50BA17091D4FF0189A01F4A295E506 /* Frameworks */,
-				59D75AB8CD9245BB3ACC7A3922287798 /* Copy generated compatibility header */,
+				185B96F1CB9022FC2430EB0425B2F1CC /* Headers */,
+				ECB33482C07849140B18D05D48DC4280 /* Sources */,
+				7F13F950BCB60FEAB97DDF0F7AF0D91A /* Frameworks */,
+				F0805BC7B49C4BCF4281ACDC9B2EC4F7 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -191,25 +211,26 @@
 			name = SwiftListTreeDataSource;
 			productName = SwiftListTreeDataSource;
 			productReference = B342D85FDB94BF9CFCFA1C29DC4C4F67 /* SwiftListTreeDataSource */;
-			productType = "com.apple.product-type.library.static";
+			productType = "com.apple.product-type.framework";
 		};
 		5929D201D7A5231BE1D60189C5521510 /* Pods-ArchitectureVisualization */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C9255462FF2C8DF352933F399610D7C5 /* Build configuration list for PBXNativeTarget "Pods-ArchitectureVisualization" */;
+			buildConfigurationList = 7DCCA634D70B9A3C1B94DEA8FBED4652 /* Build configuration list for PBXNativeTarget "Pods-ArchitectureVisualization" */;
 			buildPhases = (
-				2E086A4632A479B6497774621E4FB4FD /* Headers */,
-				F792808CE769682E7E4B07439ADE7A96 /* Sources */,
-				FC7E40989061F85C3C6E9FB4DA3B60A8 /* Frameworks */,
+				7D7DA2F9B43C11423731B1F06D9E4873 /* Headers */,
+				836B0E71D02922E7EF5D8F6C0E69F2C4 /* Sources */,
+				2DC0AD4B1D697691D6B29CA490801049 /* Frameworks */,
+				A9836E47CA9905D7E9EE485F1A0DF829 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B5882EE0276E7E7FB1A981F6BF41F163 /* PBXTargetDependency */,
+				3D4D6624ECCEAE712C8667783FC5F0EF /* PBXTargetDependency */,
 			);
 			name = "Pods-ArchitectureVisualization";
-			productName = "Pods-ArchitectureVisualization";
+			productName = Pods_ArchitectureVisualization;
 			productReference = 98594C2611E58130ACBE3A60C5A218CB /* Pods-ArchitectureVisualization */;
-			productType = "com.apple.product-type.library.static";
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -229,7 +250,7 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 1DB48492D6E42854BD1FDAD283E6EE66 /* Products */;
+			productRefGroup = 543E860939D692493C3279164045A8C5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -239,91 +260,91 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		59D75AB8CD9245BB3ACC7A3922287798 /* Copy generated compatibility header */ = {
-			isa = PBXShellScriptBuildPhase;
+/* Begin PBXResourcesBuildPhase section */
+		A9836E47CA9905D7E9EE485F1A0DF829 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h",
-				"${PODS_ROOT}/Headers/Public/SwiftListTreeDataSource/SwiftListTreeDataSource.modulemap",
-				"${PODS_ROOT}/Headers/Public/SwiftListTreeDataSource/SwiftListTreeDataSource-umbrella.h",
-			);
-			name = "Copy generated compatibility header";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap",
-				"${BUILT_PRODUCTS_DIR}/SwiftListTreeDataSource-umbrella.h",
-				"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h",
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0805BC7B49C4BCF4281ACDC9B2EC4F7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "COMPATIBILITY_HEADER_PATH=\"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h\"\nMODULE_MAP_PATH=\"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap\"\n\nditto \"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h\" \"${COMPATIBILITY_HEADER_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/SwiftListTreeDataSource/SwiftListTreeDataSource.modulemap\" \"${MODULE_MAP_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/SwiftListTreeDataSource/SwiftListTreeDataSource-umbrella.h\" \"${BUILT_PRODUCTS_DIR}\"\nprintf \"\\n\\nmodule ${PRODUCT_MODULE_NAME}.Swift {\\n  header \\\"${COMPATIBILITY_HEADER_PATH}\\\"\\n  requires objc\\n}\\n\" >> \"${MODULE_MAP_PATH}\"\n";
 		};
-/* End PBXShellScriptBuildPhase section */
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		978CEE9A68E842BD25B58830832CF8C8 /* Sources */ = {
+		836B0E71D02922E7EF5D8F6C0E69F2C4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AE3FC37BA6BFE87A178271F24C700E4 /* FilterableListTreeDataSource.swift in Sources */,
-				97F1E95B57593D53040C2CDBC810A964 /* ListTreeDataSource.swift in Sources */,
-				C3A59D18581BC5FF3F9C3FAED2A6F63D /* Queue-Optimized.swift in Sources */,
-				9AA79E7BEBD6C75671937EDD7F908971 /* SwiftListTreeDataSource-dummy.m in Sources */,
-				EEA7C7A5F93878ACCB1ADE8E13E61E14 /* Utils.swift in Sources */,
+				CA96A024160FB036DA4FCF2BFC4020C6 /* Pods-ArchitectureVisualization-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F792808CE769682E7E4B07439ADE7A96 /* Sources */ = {
+		ECB33482C07849140B18D05D48DC4280 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BE26F2DF70DDEE702DA86A8B3D30A91 /* Pods-ArchitectureVisualization-dummy.m in Sources */,
+				02FCA7C32B5993F761F29C4319AD95F3 /* FilterableListTreeDataSource.swift in Sources */,
+				5E7D33D874DC08DC013634ED1FDC9BE7 /* ListTreeDataSource.swift in Sources */,
+				F5B100B29BDAAAA99193FE48C8FFC02B /* Queue-Optimized.swift in Sources */,
+				FAF7F85C8B92ED476B667EE70F374C22 /* SwiftListTreeDataSource-dummy.m in Sources */,
+				DDAC803DBE98BCDFCD14E045973F9F8F /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B5882EE0276E7E7FB1A981F6BF41F163 /* PBXTargetDependency */ = {
+		3D4D6624ECCEAE712C8667783FC5F0EF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftListTreeDataSource;
 			target = 135C7C7DD8FBBAE48C26D57107271F2D /* SwiftListTreeDataSource */;
-			targetProxy = 749E7A4C8943144516AFEC36C6215B1D /* PBXContainerItemProxy */;
+			targetProxy = EE8982B49C3C114EA628B92C3622B838 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		4BB5C22C95C8DF9417D73A2D8E082C85 /* Debug */ = {
+		3D5CCF75D36A59B4AE827569E03BF466 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8E81CB6D50074A16CB854705F08AFA90 /* SwiftListTreeDataSource.debug.xcconfig */;
+			baseConfigurationReference = EC79A9ACA13938CC5A3197C9058A4845 /* SwiftListTreeDataSource.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				EXECUTABLE_PREFIX = lib;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftListTreeDataSource/SwiftListTreeDataSource-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftListTreeDataSource/SwiftListTreeDataSource-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = Headers/Public/SwiftListTreeDataSource/SwiftListTreeDataSource.modulemap;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
+				MODULEMAP_FILE = "Target Support Files/SwiftListTreeDataSource/SwiftListTreeDataSource.modulemap";
 				PRODUCT_MODULE_NAME = SwiftListTreeDataSource;
 				PRODUCT_NAME = SwiftListTreeDataSource;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		6865A2EF71FED7A8CA67FC03DB4AEE1E /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -391,42 +412,28 @@
 			};
 			name = Debug;
 		};
-		88BFC51C80A322AA7B580E23B1A2172C /* Release */ = {
+		82DF61E9C55A048E0FA83E1C317E4D30 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F69F192CBB71395159674D5EE74B1A67 /* SwiftListTreeDataSource.release.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				EXECUTABLE_PREFIX = lib;
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftListTreeDataSource/SwiftListTreeDataSource-prefix.pch";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = Headers/Public/SwiftListTreeDataSource/SwiftListTreeDataSource.modulemap;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = SwiftListTreeDataSource;
-				PRODUCT_NAME = SwiftListTreeDataSource;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.4;
-			};
-			name = Release;
-		};
-		A85C07C2AC5F0A1584C11DC87EBFE0CD /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6022C0247D5C1D427B2B94252B0A51DF /* Pods-ArchitectureVisualization.release.xcconfig */;
+			baseConfigurationReference = 65981659972B889765D581D7509CB960 /* Pods-ArchitectureVisualization.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				EXECUTABLE_PREFIX = lib;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ArchitectureVisualization/Pods-ArchitectureVisualization-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MODULEMAP_FILE = "Target Support Files/Pods-ArchitectureVisualization/Pods-ArchitectureVisualization.modulemap";
@@ -434,10 +441,86 @@
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		91E15D531E13756F1EDB35E7947400A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8345717FDC563FD676DDE08C8C43CDDA /* SwiftListTreeDataSource.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftListTreeDataSource/SwiftListTreeDataSource-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftListTreeDataSource/SwiftListTreeDataSource-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/SwiftListTreeDataSource/SwiftListTreeDataSource.modulemap";
+				PRODUCT_MODULE_NAME = SwiftListTreeDataSource;
+				PRODUCT_NAME = SwiftListTreeDataSource;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BA9B0F316D723D469C9D9C8CE46C27D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AF42F849AC1885BAC738A4F6CC212B0 /* Pods-ArchitectureVisualization.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ArchitectureVisualization/Pods-ArchitectureVisualization-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MODULEMAP_FILE = "Target Support Files/Pods-ArchitectureVisualization/Pods-ArchitectureVisualization.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		C309E08F17D96F54EACFBAE5C351B31C /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -501,28 +584,6 @@
 			};
 			name = Release;
 		};
-		F30B9645DFAE1622370BEF2B1DA22F54 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2632A1C248F337E0BDD8110B07FE7B74 /* Pods-ArchitectureVisualization.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				EXECUTABLE_PREFIX = lib;
-				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 14.2;
-				MODULEMAP_FILE = "Target Support Files/Pods-ArchitectureVisualization/Pods-ArchitectureVisualization.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -535,20 +596,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7254B97CE253B48536E102A8A73143FE /* Build configuration list for PBXNativeTarget "SwiftListTreeDataSource" */ = {
+		7DCCA634D70B9A3C1B94DEA8FBED4652 /* Build configuration list for PBXNativeTarget "Pods-ArchitectureVisualization" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4BB5C22C95C8DF9417D73A2D8E082C85 /* Debug */,
-				88BFC51C80A322AA7B580E23B1A2172C /* Release */,
+				BA9B0F316D723D469C9D9C8CE46C27D3 /* Debug */,
+				82DF61E9C55A048E0FA83E1C317E4D30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C9255462FF2C8DF352933F399610D7C5 /* Build configuration list for PBXNativeTarget "Pods-ArchitectureVisualization" */ = {
+		A10F54DBC74DD7958A35F077483BA957 /* Build configuration list for PBXNativeTarget "SwiftListTreeDataSource" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F30B9645DFAE1622370BEF2B1DA22F54 /* Debug */,
-				A85C07C2AC5F0A1584C11DC87EBFE0CD /* Release */,
+				91E15D531E13756F1EDB35E7947400A7 /* Debug */,
+				3D5CCF75D36A59B4AE827569E03BF466 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

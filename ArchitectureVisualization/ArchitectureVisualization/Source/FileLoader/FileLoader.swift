@@ -9,8 +9,19 @@ import Foundation
 import AppKit
 import SwiftListTreeDataSource
 
+
+// MARK: - FileLoader
+
 class FileLoader: ObservableObject {
     @Published var rootNode: FileNode?
+
+    private var fileTypeStrategy: FileTypeStrategy
+    private var fileManager: FileManager
+
+    init(fileTypeStrategy: FileTypeStrategy = SwiftFileStrategy(), fileManager: FileManager = .default) {
+        self.fileTypeStrategy = fileTypeStrategy
+        self.fileManager = fileManager
+    }
 
     func requestPermissions(completion: @escaping (Bool) -> Void) {
         let openPanel = NSOpenPanel()
@@ -36,41 +47,37 @@ class FileLoader: ObservableObject {
         }
     }
 
-    private func createFileNode(from url: URL) -> FileNode {
-        let fileManager = FileManager.default
-        let fileType = determineFileType(for: url)
+    private func createFileNode(from url: URL) -> FileNode? {
+        // Если файл имеет исключаемое расширение или является папкой .pbxproj или .xcodeproj, то пропускаем его
+        if shouldExclude(url: url) {
+            return nil
+        }
+
+        let fileType: FileType?
+
+        if url.hasDirectoryPath {
+            fileType = .folder
+        } else {
+            fileType = fileTypeStrategy.determineType(for: url)
+        }
+
+        // Если файл или папка должен быть исключен, возвращаем nil
+        if fileType == nil {
+            return nil
+        }
 
         var childrenNodes: [FileNode] = []
 
+        // Если это папка, загружаем содержимое
         if fileType == .folder, let contents = try? fileManager.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles]) {
-            childrenNodes = contents.map { createFileNode(from: $0) }
+            childrenNodes = contents.compactMap { createFileNode(from: $0) }
         }
 
-        return FileNode(name: url.lastPathComponent, fileType: fileType, children: childrenNodes)
+        return FileNode(name: url.lastPathComponent, fileType: fileType!, children: childrenNodes)
     }
 
-    private func determineFileType(for url: URL) -> FileType {
-        if url.hasDirectoryPath {
-            return .folder
-        }
-
-        guard url.pathExtension == "swift",
-              let content = try? String(contentsOf: url) else {
-            return .folder
-        }
-
-        if content.contains("class ") {
-            return .swiftClass
-        } else if content.contains("struct ") {
-            return .swiftStruct
-        } else if content.contains("enum ") {
-            return .swiftEnum
-        } else if content.contains("protocol ") {
-            return .swiftProtocol
-        } else if content.contains("import SwiftUI") && content.contains("var body: some View") {
-            return .swiftUIView
-        }
-
-        return .folder
+    // Проверка на файлы и папки, которые должны быть исключены
+    private func shouldExclude(url: URL) -> Bool {
+        return url.lastPathComponent.hasSuffix(".pbxproj") || url.lastPathComponent.hasSuffix(".xcodeproj")
     }
 }
