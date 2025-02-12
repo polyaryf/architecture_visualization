@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UMLDiagramView: View {
-    let rootNode: FileNode?
+    let rootNode: Node?
     
     @State private var scale: CGFloat = 1.0
     @State private var offset: CGSize = .zero

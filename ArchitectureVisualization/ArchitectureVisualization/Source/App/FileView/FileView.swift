@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FileView: View {
-    let node: FileNode
+    let node: Node
     @State private var isExpanded = false
 
     var body: some View {
@@ -47,7 +47,7 @@ struct FileView: View {
     }
     
     
-    private func shouldAllowExpansion(for node: FileNode) -> Bool {
+    private func shouldAllowExpansion(for node: Node) -> Bool {
         // Узел не должен быть последним с детьми
         return !(node.children?.isEmpty ?? true)
     }

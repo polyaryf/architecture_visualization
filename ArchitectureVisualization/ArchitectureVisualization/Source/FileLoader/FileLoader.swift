@@ -13,7 +13,7 @@ import SwiftListTreeDataSource
 // MARK: - FileLoader
 
 class FileLoader: ObservableObject {
-    @Published var rootNode: FileNode?
+    @Published var rootNode: Node?
 
     private var fileTypeStrategy: FileTypeStrategy
     private var fileManager: FileManager
@@ -47,33 +47,40 @@ class FileLoader: ObservableObject {
         }
     }
 
-    private func createFileNode(from url: URL) -> FileNode? {
+    private func createFileNode(from url: URL) -> Node? {
         // Если файл имеет исключаемое расширение или является папкой .pbxproj или .xcodeproj, то пропускаем его
         if shouldExclude(url: url) {
             return nil
         }
 
-        let fileType: FileType?
+        let nodeType: NodeType?
+        var swiftFileType: SwiftFileType? = nil
 
         if url.hasDirectoryPath {
-            fileType = .folder
+            nodeType = .folder
         } else {
-            fileType = fileTypeStrategy.determineType(for: url)
+            nodeType = fileTypeStrategy.determineType(for: url)
         }
 
         // Если файл или папка должен быть исключен, возвращаем nil
-        if fileType == nil {
-            return nil
-        }
+        guard let nodeType else { return nil }
 
-        var childrenNodes: [FileNode] = []
+        var childrenNodes: [Node] = []
 
         // Если это папка, загружаем содержимое
-        if fileType == .folder, let contents = try? fileManager.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles]) {
+        if nodeType == .folder, let contents = try? fileManager.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles]) {
             childrenNodes = contents.compactMap { createFileNode(from: $0) }
         }
+        if case NodeType.swiftFile(let type) = nodeType {
+            swiftFileType = type
+        }
 
-        return FileNode(name: url.lastPathComponent, fileType: fileType!, children: childrenNodes)
+        return Node(
+            name: url.lastPathComponent,
+            nodeType: nodeType,
+            swiftFileType: swiftFileType,
+            children: childrenNodes
+        )
     }
 
     // Проверка на файлы и папки, которые должны быть исключены
