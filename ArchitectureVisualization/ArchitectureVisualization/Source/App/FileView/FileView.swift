@@ -14,20 +14,24 @@ struct FileView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 24) {
             HStack {
-                if let children = node.children, !children.isEmpty {  // ✅ Проверка на nil и пустоту
+                // Вместо стрелочки теперь будет просто иконка для папки
+                if let children = node.children, !children.isEmpty {
                     Image(systemName: isExpanded ? "chevron.down" : "chevron.right")
                         .foregroundColor(.gray)
-                        .onTapGesture {
-                            withAnimation {
-                                isExpanded.toggle()
-                            }
-                        }
                 }
+                
+                // Нажатие на саму вьюшку с папкой для разворачивания
                 UMLNodeView(node: node)
+                    .onTapGesture {
+                        withAnimation {
+                            isExpanded.toggle()
+                        }
+                    }
             }
 
-            if isExpanded, let children = node.children { // ✅ Разворачиваем `children` безопасно
-                HStack(spacing: 40) { // Делаем горизонтальное расположение дочерних элементов
+            // Показ дочерних элементов, если они есть и если развернуто
+            if isExpanded, let children = node.children {
+                HStack(spacing: 40) { // Горизонтальное расположение дочерних элементов
                     ForEach(children, id: \.id) { child in
                         VStack {
                             FileView(node: child)

@@ -13,11 +13,11 @@ protocol FileTypeStrategy {
 }
 
 class SwiftFileStrategy: FileTypeStrategy {
-    // Множество для хранения фильтров, которые мы хотим исключить
+
     private let excludedExtensions: Set<String> = [".pbxproj", ".xcodeproj"]
 
     func determineType(for url: URL) -> FileType? {
-        // Проверка на расширение, которое нужно исключить
+        
         if excludedExtensions.contains(url.pathExtension.lowercased()) || isXcodeProjFolder(url) {
             return nil  // Возвращаем nil, чтобы исключить эту папку/файл
         }

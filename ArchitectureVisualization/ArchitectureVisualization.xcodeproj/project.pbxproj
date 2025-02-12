@@ -137,8 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				296636112D591BD2006F7E02 /* FileLoader.swift */,
-				2966360D2D591B97006F7E02 /* Models */,
 				296636242D5C7A41006F7E02 /* FileTypeStrategy.swift */,
+				2966360D2D591B97006F7E02 /* Models */,
 			);
 			path = FileLoader;
 			sourceTree = "<group>";
