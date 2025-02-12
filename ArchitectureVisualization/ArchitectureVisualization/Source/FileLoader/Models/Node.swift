@@ -44,19 +44,26 @@ enum SwiftFileType: Equatable {
 class Node: Identifiable {
     let id = UUID()
     var name: String
+    var url: URL
     var nodeType: NodeType
-    var swiftFileType: SwiftFileType? 
+    var swiftFileType: SwiftFileType?
     var children: [Node]?
 
     init(
         name: String,
+        url: URL,
         nodeType: NodeType,
         swiftFileType: SwiftFileType? = nil,
         children: [Node]? = nil
     ) {
         self.name = name
+        self.url = url
         self.nodeType = nodeType
         self.swiftFileType = swiftFileType
         self.children = children
+    }
+    
+    var isFolder: Bool {
+        nodeType == .folder ? true : false
     }
 }

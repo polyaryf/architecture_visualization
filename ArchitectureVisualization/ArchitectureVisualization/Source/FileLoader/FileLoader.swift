@@ -77,6 +77,7 @@ class FileLoader: ObservableObject {
 
         return Node(
             name: url.lastPathComponent,
+            url: url,
             nodeType: nodeType,
             swiftFileType: swiftFileType,
             children: childrenNodes

@@ -4,10 +4,12 @@
 //
 //  Created by Полина Рыфтина on 10.02.2025.
 //
+
 import SwiftUI
 
 struct UMLNodeView: View {
     let node: Node
+    @State private var isExpanded = false
 
     var body: some View {
         GeometryReader { geometry in
@@ -37,6 +39,10 @@ struct UMLNodeView: View {
                     .stroke(getBorderColor(for: node), lineWidth: 2)
             )
             .shadow(radius: 5) // Для улучшения внешнего вида
+            .onTapGesture(count: 2) {
+                // Обработчик двойного нажатия
+                open(at: node.url)
+            }
         }
         .frame(minWidth: 120) // Устанавливаем минимальную ширину
         .fixedSize(horizontal: false, vertical: true) // Делаем размер вьюшки динамическим по вертикали
@@ -95,5 +101,10 @@ struct UMLNodeView: View {
         default:
             return Color.clear
         }
+    }
+
+    // Открытие папки по URL
+    private func open(at url: URL) {
+        NSWorkspace.shared.open(url)
     }
 }
