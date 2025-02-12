@@ -23,15 +23,18 @@ struct FileView: View {
                 // Нажатие на саму вьюшку с папкой для разворачивания
                 UMLNodeView(node: node)
                     .onTapGesture {
-                        withAnimation {
-                            isExpanded.toggle()
+                        // Проверяем, является ли узел последним
+                        if shouldAllowExpansion(for: node) {
+                            withAnimation {
+                                isExpanded.toggle()
+                            }
                         }
                     }
             }
-
-            // Показ дочерних элементов, если они есть и если развернуто
+            
+            
             if isExpanded, let children = node.children {
-                HStack(spacing: 40) { // Горизонтальное расположение дочерних элементов
+                HStack(spacing: 40) {
                     ForEach(children, id: \.id) { child in
                         VStack {
                             FileView(node: child)
@@ -41,5 +44,11 @@ struct FileView: View {
             }
         }
         .padding()
+    }
+    
+    
+    private func shouldAllowExpansion(for node: FileNode) -> Bool {
+        // Узел не должен быть последним с детьми
+        return !(node.children?.isEmpty ?? true)
     }
 }

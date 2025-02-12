@@ -46,7 +46,7 @@ struct ContentView: View {
             }
 
             if let rootNode = fileLoader.rootNode {
-                ScrollView(.horizontal, showsIndicators: true) {
+                ScrollView(.horizontal, showsIndicators: false) {
                     HStack(alignment: .top) {
                         FileView(node: rootNode)
                     }
