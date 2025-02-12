@@ -1,3 +1,16 @@
-PODFILE CHECKSUM: d0ce11c8eaf71aefa97be8dd47ae819cb7c88c98
+PODS:
+  - SwiftListTreeDataSource (1.0.0)
+
+DEPENDENCIES:
+  - SwiftListTreeDataSource (= 1.0.0)
+
+SPEC REPOS:
+  trunk:
+    - SwiftListTreeDataSource
+
+SPEC CHECKSUMS:
+  SwiftListTreeDataSource: e3f3ab64226375b72b35f0ed439e285bc8fc12df
+
+PODFILE CHECKSUM: 277916c64d2fd475cc7c87ba86771a76504a7fba
 
 COCOAPODS: 1.15.2
