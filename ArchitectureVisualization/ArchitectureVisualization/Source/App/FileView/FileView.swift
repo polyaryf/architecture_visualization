@@ -9,14 +9,12 @@ import SwiftUI
 
 struct FileView: View {
     let node: FileNode
-    let level: Int
     @State private var isExpanded = false
-    @State private var positions: [UUID: CGPoint] = [:]
 
     var body: some View {
         VStack(alignment: .center, spacing: 24) {
             HStack {
-                if node.children != nil {
+                if let children = node.children, !children.isEmpty {  // ✅ Проверка на nil и пустоту
                     Image(systemName: isExpanded ? "chevron.down" : "chevron.right")
                         .foregroundColor(.gray)
                         .onTapGesture {
@@ -26,23 +24,13 @@ struct FileView: View {
                         }
                 }
                 UMLNodeView(node: node)
-                    .background(GeometryReader { geo in
-                        Color.clear.onAppear {
-                            DispatchQueue.main.async {
-                                positions[node.id] = geo.frame(in: .global).origin
-                            }
-                        }
-                    })
             }
-            
-            if isExpanded, let children = node.children {
-                HStack(spacing: 40) {
-                    ForEach(children) { child in
+
+            if isExpanded, let children = node.children { // ✅ Разворачиваем `children` безопасно
+                HStack(spacing: 40) { // Делаем горизонтальное расположение дочерних элементов
+                    ForEach(children, id: \.id) { child in
                         VStack {
-                            FileView(node: child, level: level + 1)
-                            if let parentPos = positions[node.id], let childPos = positions[child.id] {
-                                UMLArrowView(start: parentPos, end: childPos)
-                            }
+                            FileView(node: child)
                         }
                     }
                 }

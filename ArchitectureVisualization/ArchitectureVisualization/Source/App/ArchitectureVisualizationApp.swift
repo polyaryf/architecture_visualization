@@ -19,23 +19,36 @@ struct FileHierarchyApp: App {
 }
 
 struct ContentView: View {
+    
+    // MARK: - StateObject
     @StateObject private var fileLoader = FileLoader()
     
+    // MARK: - States
+    @State private var isDownloadButtonHidden = false
+    @State private var shouldShowNotGrantedAccessToFilesAlert = false
+
     var body: some View {
         VStack {
-            Button("Загрузить проект") {
-                fileLoader.requestPermissions { granted in
-                    if !granted {
-                        print("Доступ к файлам отклонен пользователем")
+            if !isDownloadButtonHidden {
+                Button("Загрузить проект") {
+                    fileLoader.requestPermissions { granted in
+                        guard granted else {
+                            shouldShowNotGrantedAccessToFilesAlert = true
+                            return
+                        }
+                        isDownloadButtonHidden = true
                     }
                 }
+                .alert("Нет доступа к файлам", isPresented: $shouldShowNotGrantedAccessToFilesAlert) {
+                    Button("Закрыть", role: .cancel) { }
+                }
+                .padding()
             }
-            .padding()
-            
+
             if let rootNode = fileLoader.rootNode {
-                ScrollView(.horizontal) {
+                ScrollView(.horizontal, showsIndicators: true) {
                     HStack(alignment: .top) {
-                        FileView(node: rootNode, level: 0)
+                        FileView(node: rootNode)
                     }
                     .padding()
                 }
