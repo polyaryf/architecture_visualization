@@ -17,6 +17,8 @@
 		296636252D5C7A41006F7E02 /* FileTypeStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296636242D5C7A41006F7E02 /* FileTypeStrategy.swift */; };
 		296636292D5C839C006F7E02 /* SwiftListTreeDataSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 296636282D5C839C006F7E02 /* SwiftListTreeDataSource.framework */; };
 		2966362B2D5C9C02006F7E02 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966362A2D5C9C02006F7E02 /* Node.swift */; };
+		2966362D2D5CCC3F006F7E02 /* PodNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966362C2D5CCC3F006F7E02 /* PodNode.swift */; };
+		2966362F2D5CCD3F006F7E02 /* PodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966362E2D5CCD3F006F7E02 /* PodView.swift */; };
 		297DADF22D2E832700C2A83A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 297DADF12D2E832700C2A83A /* Assets.xcassets */; };
 		297DAE002D2E832700C2A83A /* ArchitectureVisualizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297DADFF2D2E832700C2A83A /* ArchitectureVisualizationTests.swift */; };
 		297DAE0A2D2E832700C2A83A /* ArchitectureVisualizationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297DAE092D2E832700C2A83A /* ArchitectureVisualizationUITests.swift */; };
@@ -55,6 +57,8 @@
 		296636262D5C8239006F7E02 /* SwiftListTreeDataSource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftListTreeDataSource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		296636282D5C839C006F7E02 /* SwiftListTreeDataSource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftListTreeDataSource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2966362A2D5C9C02006F7E02 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		2966362C2D5CCC3F006F7E02 /* PodNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodNode.swift; sourceTree = "<group>"; };
+		2966362E2D5CCD3F006F7E02 /* PodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodView.swift; sourceTree = "<group>"; };
 		297DADEA2D2E832600C2A83A /* ArchitectureVisualization.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArchitectureVisualization.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		297DADF12D2E832700C2A83A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		297DADF42D2E832700C2A83A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -122,7 +126,7 @@
 			children = (
 				2966360A2D59178D006F7E02 /* ArchitectureVisualizationApp.swift */,
 				296636232D5BDD25006F7E02 /* UML */,
-				296636132D591BF0006F7E02 /* FileView */,
+				296636132D591BF0006F7E02 /* NodesView */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -131,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				2966362A2D5C9C02006F7E02 /* Node.swift */,
+				2966362C2D5CCC3F006F7E02 /* PodNode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -145,12 +150,13 @@
 			path = FileLoader;
 			sourceTree = "<group>";
 		};
-		296636132D591BF0006F7E02 /* FileView */ = {
+		296636132D591BF0006F7E02 /* NodesView */ = {
 			isa = PBXGroup;
 			children = (
 				296636142D591BFA006F7E02 /* FileView.swift */,
+				2966362E2D5CCD3F006F7E02 /* PodView.swift */,
 			);
-			path = FileView;
+			path = NodesView;
 			sourceTree = "<group>";
 		};
 		296636232D5BDD25006F7E02 /* UML */ = {
@@ -417,7 +423,9 @@
 			files = (
 				296636152D591BFA006F7E02 /* FileView.swift in Sources */,
 				296636122D591BD2006F7E02 /* FileLoader.swift in Sources */,
+				2966362F2D5CCD3F006F7E02 /* PodView.swift in Sources */,
 				296636172D592D73006F7E02 /* UMLDiagramView.swift in Sources */,
+				2966362D2D5CCC3F006F7E02 /* PodNode.swift in Sources */,
 				2966362B2D5C9C02006F7E02 /* Node.swift in Sources */,
 				2966361A2D5A620F006F7E02 /* UMLArrowView.swift in Sources */,
 				296636252D5C7A41006F7E02 /* FileTypeStrategy.swift in Sources */,

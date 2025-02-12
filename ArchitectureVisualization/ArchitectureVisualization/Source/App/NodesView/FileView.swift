@@ -52,3 +52,4 @@ struct FileView: View {
         return !(node.children?.isEmpty ?? true)
     }
 }
+

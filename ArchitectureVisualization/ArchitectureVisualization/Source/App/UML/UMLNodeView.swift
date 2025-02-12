@@ -7,64 +7,55 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct UMLNodeView: View {
     let node: Node
-    @State private var isExpanded = false
 
     var body: some View {
-        GeometryReader { geometry in
-            VStack {
-                Text(node.name) // Название файла
-                    .font(.headline)
+        VStack {
+            Text(getFileNameWithoutExtension(node.name)) // ✅ Убираем расширение
+                .font(.headline)
+                .foregroundColor(.white)
+                .padding(.horizontal, 10)
+                .frame(minWidth: 150, maxWidth: .infinity)
+                .lineLimit(1)
+                .truncationMode(.tail)
+                .layoutPriority(1)
+            if case let NodeType.pod(version: podVersion) = node.nodeType {
+                Text("v\(podVersion)")
+                    .font(.caption)
+                    .foregroundColor(.white.opacity(0.8))
+                    .padding(.horizontal, 10)
+            } else if let swiftFileType = node.swiftFileType {
+                Text(swiftFileTypeDescription(swiftFileType))
+                    .font(.subheadline)
                     .foregroundColor(.white)
-                    .padding(.top, 10)
-                    .padding(.bottom, 5)
-                    .lineLimit(1) // Убираем перенос строки, если название длинное
-                    .truncationMode(.tail) // Если название длинное, показывать многоточие в конце
-
-                // Пояснение типа Swift элемента
-                if let swiftFileType = node.swiftFileType {
-                    Text(swiftFileTypeDescription(swiftFileType)) // Тег с типом Swift элемента
-                        .font(.subheadline)
-                        .foregroundColor(.white)
-                        .padding(.top, 5)
-                }
-            }
-            .padding(10)
-            .frame(width: geometry.size.width) // Делаем размер вьюшки динамическим по ширине
-            .background(getBackgroundColor(for: node)) // Цвет фона в зависимости от типа Swift элемента
-            .cornerRadius(12)
-            .overlay(
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(getBorderColor(for: node), lineWidth: 2)
-            )
-            .shadow(radius: 5) // Для улучшения внешнего вида
-            .onTapGesture(count: 2) {
-                // Обработчик двойного нажатия
-                open(at: node.url)
+                    .padding(.horizontal, 10)
             }
         }
-        .frame(minWidth: 120) // Устанавливаем минимальную ширину
-        .fixedSize(horizontal: false, vertical: true) // Делаем размер вьюшки динамическим по вертикали
-        .padding(.bottom, 15) // Отступ снизу между ячейками
+        .padding(12)
+        .frame(minWidth: 150, maxWidth: .infinity, minHeight: 60)
+        .background(getBackgroundColor(for: node))
+        .cornerRadius(12)
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(getBorderColor(for: node), lineWidth: 2)
+        )
+        .shadow(radius: 5)
     }
 
-    // Получаем текстовое описание типа Swift элемента
-    private func swiftFileTypeDescription(_ type: SwiftFileType) -> String {
-        switch type {
-        case .protocol: return "Protocol"
-        case .struct: return "Struct"
-        case .enum: return "Enum"
-        case .class: return "Class"
-        case .extension: return "Extension"
-        default: return "Unknown"
-        }
+    private func getFileNameWithoutExtension(_ fileName: String) -> String {
+        return (fileName as NSString).deletingPathExtension
     }
 
-    // Функция для получения цвета фона для разных типов Swift элементов
+    /// **Подключенные Pod'ы выделяем синим цветом**
     private func getBackgroundColor(for node: Node) -> Color {
+        if case let NodeType.pod(version: version) = node.nodeType {
+            return Color.blue.opacity(0.3)
+        }
         guard case NodeType.swiftFile(let type) = node.nodeType else {
-            return Color.gray.opacity(0.2) // Для не-Swift элементов
+            return Color.gray.opacity(0.2)
         }
         switch type {
         case .protocol:
@@ -82,12 +73,15 @@ struct UMLNodeView: View {
         }
     }
 
-    // Цвет обводки для разных типов Swift элементов
+    /// **Обводка Pod'ов делаем синей**
     private func getBorderColor(for node: Node) -> Color {
-        guard case NodeType.swiftFile(let type) = node.nodeType else {
+        if case let NodeType.pod(version: version) = node.nodeType {
+            return Color.blue
+        }
+        guard let swiftFileType = node.swiftFileType else {
             return Color.gray
         }
-        switch type {
+        switch swiftFileType {
         case .protocol:
             return Color.blue
         case .struct:
@@ -102,9 +96,15 @@ struct UMLNodeView: View {
             return Color.clear
         }
     }
-
-    // Открытие папки по URL
-    private func open(at url: URL) {
-        NSWorkspace.shared.open(url)
+    
+    private func swiftFileTypeDescription(_ type: SwiftFileType) -> String {
+        switch type {
+        case .protocol: return "Protocol"
+        case .struct: return "Struct"
+        case .enum: return "Enum"
+        case .class: return "Class"
+        case .extension: return "Extension"
+        default: return "Unknown"
+        }
     }
 }

@@ -13,6 +13,7 @@ import SwiftListTreeDataSource
 enum NodeType: Equatable {
     case folder
     case swiftFile(SwiftFileType)
+    case pod(version: String)
     
     var name: String {
         switch self {
@@ -33,6 +34,8 @@ enum NodeType: Equatable {
             case .unknown:
                 "unknown"
             }
+        case .pod(version: let version):
+            "pod version: \(version)"
         }
     }
 }
@@ -43,11 +46,13 @@ enum SwiftFileType: Equatable {
 
 class Node: Identifiable {
     let id = UUID()
-    var name: String
+    
     var url: URL
     var nodeType: NodeType
     var swiftFileType: SwiftFileType?
     var children: [Node]?
+    
+    private var _name: String
 
     init(
         name: String,
@@ -56,7 +61,7 @@ class Node: Identifiable {
         swiftFileType: SwiftFileType? = nil,
         children: [Node]? = nil
     ) {
-        self.name = name
+        self._name = name
         self.url = url
         self.nodeType = nodeType
         self.swiftFileType = swiftFileType
@@ -65,5 +70,9 @@ class Node: Identifiable {
     
     var isFolder: Bool {
         nodeType == .folder ? true : false
+    }
+    
+    var name: String {
+        (_name as NSString).deletingPathExtension
     }
 }

@@ -14,18 +14,23 @@ protocol FileTypeStrategy {
 
 class SwiftFileStrategy: FileTypeStrategy {
 
-    private let excludedExtensions: Set<String> = [".pbxproj", ".xcodeproj"]
+    private let excludedExtensions: Set<String> = [
+        ".pbxproj", ".xcodeproj", ".lock", ".xcworkspace",
+    ]
 
     func determineType(for url: URL) -> NodeType? {
         
-        if excludedExtensions.contains(url.pathExtension.lowercased()) || isXcodeProjFolder(url) {
-            return nil  // Возвращаем nil, чтобы исключить эту папку/файл
+        if excludedExtensions.contains(url.pathExtension.lowercased()) 
+            || isXcodeProjFolder(url)
+            || isPodFile(url)
+        {
+            return nil
         }
 
         if url.hasDirectoryPath {
             return .folder
         }
-
+       
         guard url.pathExtension == "swift", let content = try? String(contentsOf: url) else {
             return .folder
         }
@@ -47,8 +52,12 @@ class SwiftFileStrategy: FileTypeStrategy {
         return .swiftFile(swiftFileType)
     }
 
-    // Функция для проверки, является ли это папка с расширением .xcodeproj
     private func isXcodeProjFolder(_ url: URL) -> Bool {
-        return url.lastPathComponent.lowercased().hasSuffix(".xcodeproj")
+        url.lastPathComponent.lowercased().hasSuffix(".xcodeproj")
+    }
+    
+    private func isPodFile(_ url: URL) -> Bool {
+        url.lastPathComponent.contains("Podfile")
+        || url.lastPathComponent.contains("Gemfile")
     }
 }

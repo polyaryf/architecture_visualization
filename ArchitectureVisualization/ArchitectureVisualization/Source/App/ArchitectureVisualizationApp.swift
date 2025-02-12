@@ -48,7 +48,7 @@ struct ContentView: View {
             if let rootNode = fileLoader.rootNode {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(alignment: .top) {
-                        FileView(node: rootNode)
+                        DiagramView(fileLoader: fileLoader)
                     }
                     .padding()
                 }
