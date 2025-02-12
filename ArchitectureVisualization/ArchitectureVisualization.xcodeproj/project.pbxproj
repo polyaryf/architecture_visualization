@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1412248197F130B1C1657D0F /* libPods-ArchitectureVisualization.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ED6B6B945180D46BD748CFC /* libPods-ArchitectureVisualization.a */; };
 		2966360B2D59178D006F7E02 /* ArchitectureVisualizationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966360A2D59178D006F7E02 /* ArchitectureVisualizationApp.swift */; };
 		2966360F2D591BA5006F7E02 /* FileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966360E2D591BA5006F7E02 /* FileNode.swift */; };
 		296636122D591BD2006F7E02 /* FileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296636112D591BD2006F7E02 /* FileLoader.swift */; };
@@ -16,8 +15,9 @@
 		2966361A2D5A620F006F7E02 /* UMLArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296636192D5A620F006F7E02 /* UMLArrowView.swift */; };
 		2966361C2D5A631A006F7E02 /* UMLNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966361B2D5A631A006F7E02 /* UMLNodeView.swift */; };
 		2966361E2D5A632F006F7E02 /* UMLControlPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966361D2D5A632F006F7E02 /* UMLControlPanel.swift */; };
+		296636252D5C7A41006F7E02 /* FileTypeStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296636242D5C7A41006F7E02 /* FileTypeStrategy.swift */; };
+		296636292D5C839C006F7E02 /* SwiftListTreeDataSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 296636282D5C839C006F7E02 /* SwiftListTreeDataSource.framework */; };
 		297DADF22D2E832700C2A83A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 297DADF12D2E832700C2A83A /* Assets.xcassets */; };
-		297DADF52D2E832700C2A83A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 297DADF42D2E832700C2A83A /* Preview Assets.xcassets */; };
 		297DAE002D2E832700C2A83A /* ArchitectureVisualizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297DADFF2D2E832700C2A83A /* ArchitectureVisualizationTests.swift */; };
 		297DAE0A2D2E832700C2A83A /* ArchitectureVisualizationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297DAE092D2E832700C2A83A /* ArchitectureVisualizationUITests.swift */; };
 		297DAE0C2D2E832700C2A83A /* ArchitectureVisualizationUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297DAE0B2D2E832700C2A83A /* ArchitectureVisualizationUITestsLaunchTests.swift */; };
@@ -51,6 +51,9 @@
 		296636192D5A620F006F7E02 /* UMLArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMLArrowView.swift; sourceTree = "<group>"; };
 		2966361B2D5A631A006F7E02 /* UMLNodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMLNodeView.swift; sourceTree = "<group>"; };
 		2966361D2D5A632F006F7E02 /* UMLControlPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMLControlPanel.swift; sourceTree = "<group>"; };
+		296636242D5C7A41006F7E02 /* FileTypeStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTypeStrategy.swift; sourceTree = "<group>"; };
+		296636262D5C8239006F7E02 /* SwiftListTreeDataSource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftListTreeDataSource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		296636282D5C839C006F7E02 /* SwiftListTreeDataSource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftListTreeDataSource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		297DADEA2D2E832600C2A83A /* ArchitectureVisualization.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArchitectureVisualization.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		297DADF12D2E832700C2A83A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		297DADF42D2E832700C2A83A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -62,8 +65,8 @@
 		297DAE0B2D2E832700C2A83A /* ArchitectureVisualizationUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureVisualizationUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		29E22BC22D36E4D70077DD58 /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
 		29E22BC42D36E5360077DD58 /* TestItemIdentifierType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestItemIdentifierType.swift; sourceTree = "<group>"; };
-		3ED6B6B945180D46BD748CFC /* libPods-ArchitectureVisualization.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ArchitectureVisualization.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		480D5EF9D128FAD336487886 /* Pods-ArchitectureVisualization.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureVisualization.debug.xcconfig"; path = "Target Support Files/Pods-ArchitectureVisualization/Pods-ArchitectureVisualization.debug.xcconfig"; sourceTree = "<group>"; };
+		4E1E7890C432E76DDB16D6A9 /* Pods_ArchitectureVisualization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArchitectureVisualization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA28CC067435443D222141AB /* Pods-ArchitectureVisualization.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureVisualization.release.xcconfig"; path = "Target Support Files/Pods-ArchitectureVisualization/Pods-ArchitectureVisualization.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,7 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1412248197F130B1C1657D0F /* libPods-ArchitectureVisualization.a in Frameworks */,
+				296636292D5C839C006F7E02 /* SwiftListTreeDataSource.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,7 +99,9 @@
 		269E8C955E7A847434794E36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3ED6B6B945180D46BD748CFC /* libPods-ArchitectureVisualization.a */,
+				296636282D5C839C006F7E02 /* SwiftListTreeDataSource.framework */,
+				296636262D5C8239006F7E02 /* SwiftListTreeDataSource.framework */,
+				4E1E7890C432E76DDB16D6A9 /* Pods_ArchitectureVisualization.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -133,6 +138,7 @@
 			children = (
 				296636112D591BD2006F7E02 /* FileLoader.swift */,
 				2966360D2D591B97006F7E02 /* Models */,
+				296636242D5C7A41006F7E02 /* FileTypeStrategy.swift */,
 			);
 			path = FileLoader;
 			sourceTree = "<group>";
@@ -244,6 +250,7 @@
 				297DADE62D2E832600C2A83A /* Sources */,
 				297DADE72D2E832600C2A83A /* Frameworks */,
 				297DADE82D2E832600C2A83A /* Resources */,
+				43096504FB98D405545D5CE4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -324,7 +331,6 @@
 			);
 			mainGroup = 297DADE12D2E832600C2A83A;
 			packageReferences = (
-				296636182D5A5907006F7E02 /* XCRemoteSwiftPackageReference "swift-syntax" */,
 			);
 			productRefGroup = 297DADEB2D2E832600C2A83A /* Products */;
 			projectDirPath = "";
@@ -342,7 +348,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				297DADF52D2E832700C2A83A /* Preview Assets.xcassets in Resources */,
 				297DADF22D2E832700C2A83A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,6 +369,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		43096504FB98D405545D5CE4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ArchitectureVisualization/Pods-ArchitectureVisualization-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ArchitectureVisualization/Pods-ArchitectureVisualization-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArchitectureVisualization/Pods-ArchitectureVisualization-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D74B8BEF099B8ACCED1AC530 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -397,6 +419,7 @@
 				296636122D591BD2006F7E02 /* FileLoader.swift in Sources */,
 				296636172D592D73006F7E02 /* UMLDiagramView.swift in Sources */,
 				2966361A2D5A620F006F7E02 /* UMLArrowView.swift in Sources */,
+				296636252D5C7A41006F7E02 /* FileTypeStrategy.swift in Sources */,
 				2966360B2D59178D006F7E02 /* ArchitectureVisualizationApp.swift in Sources */,
 				2966360F2D591BA5006F7E02 /* FileNode.swift in Sources */,
 				2966361C2D5A631A006F7E02 /* UMLNodeView.swift in Sources */,
@@ -476,7 +499,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -539,7 +562,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -585,6 +608,10 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(/Users/polinom/Repositories/architecture_visualization-/ArchitectureVisualization)/Pods",
+				);
 			};
 			name = Debug;
 		};
@@ -615,6 +642,10 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(/Users/polinom/Repositories/architecture_visualization-/ArchitectureVisualization)/Pods",
+				);
 			};
 			name = Release;
 		};
@@ -726,17 +757,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		296636182D5A5907006F7E02 /* XCRemoteSwiftPackageReference "swift-syntax" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/swiftlang/swift-syntax";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 600.0.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 297DADE22D2E832600C2A83A /* Project object */;
 }

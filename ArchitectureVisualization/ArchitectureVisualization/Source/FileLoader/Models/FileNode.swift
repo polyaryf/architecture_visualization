@@ -8,7 +8,7 @@
 import Foundation
 import SwiftListTreeDataSource
 
-import Foundation
+// MARK: - FileNode
 
 enum FileType {
     case folder
