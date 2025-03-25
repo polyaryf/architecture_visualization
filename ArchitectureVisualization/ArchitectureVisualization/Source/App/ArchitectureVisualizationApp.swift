@@ -1,10 +1,3 @@
-//
-//  FileHierarchyApp.swift
-//  ArchitectureVisualization
-//
-//  Created by Полина Рыфтина on 10.02.2025.
-//
-
 import SwiftUI
 import UniformTypeIdentifiers
 import AppKit
@@ -13,17 +6,19 @@ import AppKit
 struct FileHierarchyApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainContentView()
         }
     }
 }
 
-struct ContentView: View {
+struct MainContentView: View {
     
     // MARK: - StateObject
-    @StateObject private var fileLoader = FileLoader()
+    
+    @StateObject private var fileLoader = FileLoader.shared
     
     // MARK: - States
+    
     @State private var isDownloadButtonHidden = false
     @State private var shouldShowNotGrantedAccessToFilesAlert = false
 
@@ -44,19 +39,15 @@ struct ContentView: View {
                 }
                 .padding()
             }
-
-            if let rootNode = fileLoader.rootNode {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(alignment: .top) {
-                        DiagramView(fileLoader: fileLoader)
-                    }
-                    .padding()
+            
+            ScrollView(
+                .horizontal,
+                showsIndicators: false
+            ) {
+                HStack(alignment: .top) {
+                    DiagramView(fileLoader: fileLoader)
                 }
-            } else {
-                Text("Выберите папку с проектом")
-                    .font(.title2)
-                    .foregroundColor(.gray)
-                    .padding()
+                .padding()
             }
         }
     }
