@@ -12,12 +12,7 @@ struct ArchitectureVisualizationApp: App {
 }
 
 struct MainContentView: View {
-    
-    // MARK: - StateObject
-    
     @StateObject private var fileLoader = FileLoader.shared
-    
-    // MARK: - States
     
     @State private var isDownloadButtonHidden = false
     @State private var shouldShowNotGrantedAccessToFilesAlert = false
@@ -27,28 +22,28 @@ struct MainContentView: View {
             if !isDownloadButtonHidden {
                 Button("Загрузить проект") {
                     fileLoader.requestPermissions { granted in
-                        guard granted else {
+                        if granted {
+                            isDownloadButtonHidden = true
+                        } else {
                             shouldShowNotGrantedAccessToFilesAlert = true
-                            return
                         }
-                        isDownloadButtonHidden = true
                     }
                 }
                 .alert("Нет доступа к файлам", isPresented: $shouldShowNotGrantedAccessToFilesAlert) {
-                    Button("Закрыть", role: .cancel) { }
+                    Button("Закрыть", role: .cancel) {}
                 }
                 .padding()
             }
-            
-            ScrollView(
-                .horizontal,
-                showsIndicators: false
-            ) {
-                HStack(alignment: .top) {
-                    DiagramView(fileLoader: fileLoader)
-                }
-                .padding()
+
+            if !fileLoader.swiftNodes.isEmpty {
+                DiagramView(fileLoader: fileLoader)
+            } else {
+                Spacer()
+                Text("Загрузите проект, чтобы увидеть архитектуру")
+                    .foregroundColor(.gray)
+                Spacer()
             }
         }
+        .padding()
     }
 }

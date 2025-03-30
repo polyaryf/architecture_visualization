@@ -11,13 +11,20 @@ struct EnhancedDiagramView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            ZStack(alignment: .topLeading) {
-                ScrollView([.horizontal, .vertical], showsIndicators: false) {
-                    VStack(alignment: .leading, spacing: 20) {
+            let layout = generateLayout(from: fileLoader.swiftNodes, in: geometry)
+            ScrollView([.horizontal, .vertical], showsIndicators: false) {
+                ZStack {
+                    if !fileLoader.pods.isEmpty {
+                        AllPodsView(fileLoader: fileLoader)
+                            .position(x: -100, y: -100)
+                    }
+                    Color.clear
+                    ZStack {
                         ForEach(fileLoader.swiftNodes) { node in
                             EnhancedNodeView(node: node)
+                                .frame(maxWidth: 360)
+                                .background(Color.clear)
                                 .background(NodeGeometryReader(id: node.name, frames: $nodeFrames))
-                                .padding(8)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 20)
                                         .stroke(selectedNode == node.name ? Color.accentColor : Color.clear, lineWidth: 3)
@@ -27,125 +34,82 @@ struct EnhancedDiagramView: View {
                                         selectedNode = selectedNode == node.name ? nil : node.name
                                     }
                                 }
+                                .position(layout[node.name, default: .zero])
                         }
                     }
-                    .padding()
-                    .scaleEffect(scale)
-                    .offset(x: offset.width + gestureOffset.width, y: offset.height + gestureOffset.height)
-                    .animation(.spring(), value: scale)
-                    .gesture(
-                        DragGesture()
-                            .updating($gestureOffset) { value, state, _ in
-                                state = value.translation
+
+                    // 🎯 Стрелки
+                    if !nodeFrames.isEmpty {
+                        Canvas { context, _ in
+                            let graph = GraphBuilder.build(from: fileLoader.swiftNodes)
+
+                            for (from, edges) in graph {
+                                guard let fromFrame = nodeFrames[from] else { continue }
+                                let fromPoint = CGPoint(x: fromFrame.maxX, y: fromFrame.midY)
+
+                                for edge in edges {
+                                    guard let toFrame = nodeFrames[edge.to] else { continue }
+                                    let toPoint = CGPoint(x: toFrame.minX, y: toFrame.midY)
+
+                                    let arrow = UMLArrowPath(start: fromPoint, end: toPoint, type: edge.type)
+                                    let isHighlighted = selectedNode == nil || selectedNode == from || selectedNode == edge.to
+                                    let color = isHighlighted ? arrow.color : arrow.color.opacity(0.2)
+                                    let style = isHighlighted ? arrow.style : StrokeStyle(lineWidth: 1, dash: [2, 6])
+
+                                    context.stroke(arrow.path, with: .color(color), style: style)
+                                }
                             }
-                            .onEnded { value in
-                                offset.width += value.translation.width
-                                offset.height += value.translation.height
-                            }
-                    )
-                    .gesture(
-                        MagnificationGesture()
-                            .onChanged { value in
-                                scale = min(max(0.5, scale * value), 2.5)
-                            }
-                    )
-                }
-
-                // Отрисовка стрелок
-                Canvas { context, _ in
-                    let graph = GraphBuilder.build(from: fileLoader.swiftNodes)
-
-                    for (from, edges) in graph {
-                        guard let fromFrame = nodeFrames[from] else { continue }
-                        let fromPoint = CGPoint(x: fromFrame.maxX, y: fromFrame.midY)
-
-                        for edge in edges {
-                            guard let toFrame = nodeFrames[edge.to] else { continue }
-                            let toPoint = CGPoint(x: toFrame.minX, y: toFrame.midY)
-
-                            let arrow = UMLArrowPath(start: fromPoint, end: toPoint, type: edge.type)
-                            let isHighlighted = selectedNode == nil || selectedNode == from || selectedNode == edge.to
-                            let color = isHighlighted ? arrow.color : arrow.color.opacity(0.2)
-                            let style = isHighlighted ? arrow.style : StrokeStyle(lineWidth: 1, dash: [2, 6])
-
-                            context.stroke(arrow.path, with: .color(color), style: style)
                         }
+                        .frame(width: 3000, height: 3000)
+                        .scaleEffect(scale)
+                        .offset(x: offset.width + gestureOffset.width, y: offset.height + gestureOffset.height)
                     }
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-
-                UMLControlPanel(scale: $scale, offset: $offset)
-                    .padding()
+                .frame(width: 3000, height: 3000)
+                .scaleEffect(scale)
+                .offset(x: offset.width + gestureOffset.width, y: offset.height + gestureOffset.height)
+                .gesture(
+                    DragGesture()
+                        .updating($gestureOffset) { value, state, _ in
+                            state = value.translation
+                        }
+                        .onEnded { value in
+                            offset.width += value.translation.width
+                            offset.height += value.translation.height
+                        }
+                )
+                .gesture(
+                    MagnificationGesture()
+                        .onChanged { value in
+                            scale = min(max(0.5, scale * value), 2.5)
+                        }
+                )
             }
+            .coordinateSpace(name: "diagramSpace")
         }
     }
 }
 
-// Чтение геометрии каждой ноды
-struct NodeGeometryReader: View {
-    let id: String
-    @Binding var frames: [String: CGRect]
+func generateLayout(from nodes: [SwiftNode], in geometry: GeometryProxy) -> [String: CGPoint] {
+    let nodeWidth: CGFloat = 400
+    let nodeHeight: CGFloat = 320
+    let spacingX: CGFloat = 80
+    let spacingY: CGFloat = 80
 
-    var body: some View {
-        GeometryReader { geo in
-            Color.clear
-                .preference(key: NodeFramePreferenceKey.self, value: [id: geo.frame(in: .named("diagramSpace"))])
-        }
-        .onPreferenceChange(NodeFramePreferenceKey.self) { value in
-            frames.merge(value) { $1 }
-        }
+    let availableWidth = geometry.size.width
+    let columns = max(Int(availableWidth / (nodeWidth + spacingX)), 2)
+
+    var layout: [String: CGPoint] = [:]
+
+    for (i, node) in nodes.enumerated() {
+        let col = i % columns
+        let row = i / columns
+
+        let x = CGFloat(col) * (nodeWidth + spacingX) + nodeWidth / 2
+        let y = CGFloat(row) * (nodeHeight + spacingY) + nodeHeight / 2
+
+        layout[node.name] = CGPoint(x: x, y: y)
     }
-}
 
-struct NodeFramePreferenceKey: PreferenceKey {
-    static var defaultValue: [String: CGRect] = [:]
-    static func reduce(value: inout [String: CGRect], nextValue: () -> [String: CGRect]) {
-        value.merge(nextValue(), uniquingKeysWith: { $1 })
-    }
-}
-
-// Для построения стрелки
-struct UMLArrowPath {
-    let path: Path
-    let color: Color
-    let style: StrokeStyle
-
-    init(start: CGPoint, end: CGPoint, type: RelationshipArrow) {
-        var p = Path()
-        p.move(to: start)
-        p.addLine(to: CGPoint(x: start.x + 40, y: start.y))
-        p.addLine(to: CGPoint(x: end.x - 10, y: end.y))
-        p.addLine(to: end)
-
-        let arrowSize: CGFloat = 10
-        let arrowTip1 = CGPoint(x: end.x - arrowSize, y: end.y - arrowSize / 2)
-        let arrowTip2 = CGPoint(x: end.x - arrowSize, y: end.y + arrowSize / 2)
-        p.move(to: end)
-        p.addLine(to: arrowTip1)
-        p.move(to: end)
-        p.addLine(to: arrowTip2)
-
-        self.path = p
-
-        switch type {
-        case .inheritance:
-            self.color = .black
-            self.style = StrokeStyle(lineWidth: 2)
-        case .composition:
-            self.color = .brown
-            self.style = StrokeStyle(lineWidth: 2)
-        case .aggregation:
-            self.color = .gray
-            self.style = StrokeStyle(lineWidth: 1.5, dash: [4, 4])
-        case .referenceStrong:
-            self.color = .blue
-            self.style = StrokeStyle(lineWidth: 1.5)
-        case .referenceWeak:
-            self.color = .orange
-            self.style = StrokeStyle(lineWidth: 1.2, dash: [2, 4])
-        case .referenceUnowned:
-            self.color = .red
-            self.style = StrokeStyle(lineWidth: 1.2, dash: [1, 3])
-        }
-    }
+    return layout
 }

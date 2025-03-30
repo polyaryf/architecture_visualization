@@ -60,3 +60,57 @@ struct UMLArrowView: View {
         }
     }
 }
+
+struct UMLArrowPath {
+    let path: Path
+    let color: Color
+    let style: StrokeStyle
+
+    init(start: CGPoint, end: CGPoint, type: RelationshipArrow) {
+        var p = Path()
+
+        let midX = (start.x + end.x) / 2
+        let control = CGPoint(x: midX, y: min(start.y, end.y) - 40)
+
+        p.move(to: start)
+        p.addQuadCurve(to: end, control: control)
+
+        // стрелочка
+        let arrowSize: CGFloat = 10
+        let dx = end.x - start.x
+        let dy = end.y - start.y
+        let angle = atan2(dy, dx)
+        let arrowTip1 = CGPoint(x: end.x - cos(angle - .pi / 6) * arrowSize,
+                                y: end.y - sin(angle - .pi / 6) * arrowSize)
+        let arrowTip2 = CGPoint(x: end.x - cos(angle + .pi / 6) * arrowSize,
+                                y: end.y - sin(angle + .pi / 6) * arrowSize)
+
+        p.move(to: end)
+        p.addLine(to: arrowTip1)
+        p.move(to: end)
+        p.addLine(to: arrowTip2)
+
+        self.path = p
+
+        switch type {
+        case .inheritance:
+            color = .black
+            style = StrokeStyle(lineWidth: 2)
+        case .composition:
+            color = .brown
+            style = StrokeStyle(lineWidth: 2)
+        case .aggregation:
+            color = .gray
+            style = StrokeStyle(lineWidth: 1.5, dash: [4, 4])
+        case .referenceStrong:
+            color = .blue
+            style = StrokeStyle(lineWidth: 1.5)
+        case .referenceWeak:
+            color = .orange
+            style = StrokeStyle(lineWidth: 1.2, dash: [2, 4])
+        case .referenceUnowned:
+            color = .red
+            style = StrokeStyle(lineWidth: 1.2, dash: [1, 3])
+        }
+    }
+}

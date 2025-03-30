@@ -1,10 +1,3 @@
-//
-//  EnhancedNodeView.swift
-//  ArchitectureVisualization
-//
-//  Created by Полина Рыфтина on 30.03.2025.
-//
-
 import SwiftUI
 
 struct EnhancedNodeView: View {
@@ -18,13 +11,14 @@ struct EnhancedNodeView: View {
                 Text("\(node.type.rawValue.capitalized): \(node.name)")
                     .font(.title3)
                     .bold()
+                    .foregroundColor(.gray)
             }
 
             Divider()
 
             if !node.properties.isEmpty {
                 ExpandableSection(title: "Properties") {
-                    ForEach(node.properties, id: \ .id) { property in
+                    ForEach(node.properties, id: \.id) { property in
                         Label(property.name, systemImage: "p.circle")
                             .foregroundColor(.gray)
                     }
@@ -33,7 +27,7 @@ struct EnhancedNodeView: View {
 
             if !node.functions.isEmpty {
                 ExpandableSection(title: "Functions") {
-                    ForEach(node.functions, id: \ .id) { function in
+                    ForEach(node.functions, id: \.id) { function in
                         Label(function.name, systemImage: "f.cursive")
                             .foregroundColor(.gray)
                     }
@@ -42,7 +36,7 @@ struct EnhancedNodeView: View {
 
             if !node.conformsTo.isEmpty {
                 ExpandableSection(title: "Conforms To") {
-                    ForEach(node.conformsTo, id: \ .self) { protocolName in
+                    ForEach(node.conformsTo, id: \.self) { protocolName in
                         Label(protocolName, systemImage: "checkmark.shield")
                             .foregroundColor(.blue)
                     }
@@ -51,7 +45,11 @@ struct EnhancedNodeView: View {
         }
         .padding()
         .background(RoundedRectangle(cornerRadius: 20).fill(Color.white))
-        .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 5)
+        .overlay(
+            RoundedRectangle(cornerRadius: 20)
+                .stroke(Color.accentColor.opacity(0.3), lineWidth: 1)
+        )
+        .shadow(color: Color.black.opacity(0.05), radius: 6, x: 0, y: 3)
     }
 
     private func iconName(for type: SwiftNodeType) -> String {
