@@ -3,7 +3,7 @@ import UniformTypeIdentifiers
 import AppKit
 
 @main
-struct FileHierarchyApp: App {
+struct ArchitectureVisualizationApp: App {
     var body: some Scene {
         WindowGroup {
             MainContentView()
