@@ -22,7 +22,6 @@
 		297DAE0A2D2E832700C2A83A /* ArchitectureVisualizationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297DAE092D2E832700C2A83A /* ArchitectureVisualizationUITests.swift */; };
 		297DAE0C2D2E832700C2A83A /* ArchitectureVisualizationUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297DAE0B2D2E832700C2A83A /* ArchitectureVisualizationUITestsLaunchTests.swift */; };
 		298974B82D998FD70018DA18 /* NodeGeometryReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298974B72D998FD70018DA18 /* NodeGeometryReader.swift */; };
-		298974BA2D99AB490018DA18 /* GenerateLayoutHierarchical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298974B92D99AB490018DA18 /* GenerateLayoutHierarchical.swift */; };
 		29C711382D9961C5002111CC /* EnhancedNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C711372D9961C5002111CC /* EnhancedNodeView.swift */; };
 		29C7113A2D9961F2002111CC /* EnhancedDiagramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C711392D9961F2002111CC /* EnhancedDiagramView.swift */; };
 		29C7113D2D99638A002111CC /* GraphBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7113C2D99638A002111CC /* GraphBuilder.swift */; };
@@ -73,7 +72,6 @@
 		297DAE092D2E832700C2A83A /* ArchitectureVisualizationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureVisualizationUITests.swift; sourceTree = "<group>"; };
 		297DAE0B2D2E832700C2A83A /* ArchitectureVisualizationUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureVisualizationUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		298974B72D998FD70018DA18 /* NodeGeometryReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeGeometryReader.swift; sourceTree = "<group>"; };
-		298974B92D99AB490018DA18 /* GenerateLayoutHierarchical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateLayoutHierarchical.swift; sourceTree = "<group>"; };
 		29C711372D9961C5002111CC /* EnhancedNodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedNodeView.swift; sourceTree = "<group>"; };
 		29C711392D9961F2002111CC /* EnhancedDiagramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedDiagramView.swift; sourceTree = "<group>"; };
 		29C7113C2D99638A002111CC /* GraphBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphBuilder.swift; sourceTree = "<group>"; };
@@ -114,10 +112,9 @@
 		291F64F22D91DA8D00598942 /* BaseUI */ = {
 			isa = PBXGroup;
 			children = (
-				29C711392D9961F2002111CC /* EnhancedDiagramView.swift */,
-				298974B92D99AB490018DA18 /* GenerateLayoutHierarchical.swift */,
 				291F64F32D91DA9600598942 /* ExpandableSection.swift */,
 				29C711372D9961C5002111CC /* EnhancedNodeView.swift */,
+				29C711392D9961F2002111CC /* EnhancedDiagramView.swift */,
 				298974B72D998FD70018DA18 /* NodeGeometryReader.swift */,
 			);
 			path = BaseUI;
@@ -419,7 +416,6 @@
 				291F64F42D91DA9600598942 /* ExpandableSection.swift in Sources */,
 				29D1F02E2D89C7E50089743A /* SwiftNodeType.swift in Sources */,
 				2966361A2D5A620F006F7E02 /* UMLArrowView.swift in Sources */,
-				298974BA2D99AB490018DA18 /* GenerateLayoutHierarchical.swift in Sources */,
 				296636252D5C7A41006F7E02 /* FileTypeStrategy.swift in Sources */,
 				29C7113D2D99638A002111CC /* GraphBuilder.swift in Sources */,
 				298974B82D998FD70018DA18 /* NodeGeometryReader.swift in Sources */,

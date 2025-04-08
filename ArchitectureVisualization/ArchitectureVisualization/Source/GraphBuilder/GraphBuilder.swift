@@ -12,44 +12,32 @@ enum RelationshipArrow: String {
 
 /// Ребро графа
 struct Edge {
-    let from: String
     let to: String
     let type: RelationshipArrow
 }
 
-import Foundation
-
+/// Построитель ориентированного графа архитектурных связей
 struct GraphBuilder {
+
+    /// Строит граф из массива SwiftNode
     static func build(from nodes: [SwiftNode]) -> [String: [Edge]] {
         var graph: [String: [Edge]] = [:]
-
-        // Надёжный способ создать nodeDict без краша
-        let nodeDict = nodes.reduce(into: [String: SwiftNode]()) { dict, node in
-            if dict[node.name] == nil {
-                dict[node.name] = node
-            } else {
-                print("⚠️ Duplicate node name detected: \(node.name)")
-            }
-        }
+        let allNodeNames = Set(nodes.map { $0.name })
 
         for node in nodes {
             var edges: [Edge] = []
 
-            for property in node.properties {
-                let relation = referenceType(for: property)
+            for relationship in node.relationships {
+                let target = relationship.to
+                guard allNodeNames.contains(target) else { continue }
 
-                if let referenced = nodeDict[property.type] {
-                    edges.append(Edge(from: referenced.name, to: node.name, type: relation))
-                }
+                let arrowType: RelationshipArrow = mapType(
+                    source: node,
+                    targetName: target,
+                    relationship: relationship
+                )
 
-                let conforming = nodes.filter { $0.conformsTo.contains(property.type) }
-                for conf in conforming {
-                    edges.append(Edge(from: conf.name, to: node.name, type: relation))
-                }
-            }
-
-            if let superClass = node.inheritsFrom {
-                edges.append(Edge(from: superClass, to: node.name, type: .inheritance))
+                edges.append(Edge(to: target, type: arrowType))
             }
 
             graph[node.name] = edges
@@ -58,11 +46,31 @@ struct GraphBuilder {
         return graph
     }
 
-    private static func referenceType(for property: SwiftProperty) -> RelationshipArrow {
-        switch property.modifier {
-        case .weak: return .referenceWeak
-        case .unowned: return .referenceUnowned
-        default: return .referenceStrong
+    /// Маппинг типа связи на визуальный тип стрелки
+    private static func mapType(
+        source: SwiftNode,
+        targetName: String,
+        relationship: SwiftRelationship
+    ) -> RelationshipArrow {
+        switch relationship.type {
+        case .inheritance:
+            return .inheritance
+
+        case .aggregation:
+            return .aggregation
+
+        case .composition:
+            return .composition
+
+        case .reference(let strength):
+            switch strength {
+            case .strong:
+                return .referenceStrong
+            case .weak:
+                return .referenceWeak
+            case .unowned:
+                return .referenceUnowned
+            }
         }
     }
 }
