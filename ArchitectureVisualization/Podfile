@@ -1,5 +1,0 @@
-target 'ArchitectureVisualization' do
-    use_frameworks!
-
-    pod "SwiftListTreeDataSource", "1.0.0"
-end

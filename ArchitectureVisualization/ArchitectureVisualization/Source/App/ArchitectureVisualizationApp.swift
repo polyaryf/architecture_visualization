@@ -1,29 +1,19 @@
-//
-//  FileHierarchyApp.swift
-//  ArchitectureVisualization
-//
-//  Created by Полина Рыфтина on 10.02.2025.
-//
-
 import SwiftUI
 import UniformTypeIdentifiers
 import AppKit
 
 @main
-struct FileHierarchyApp: App {
+struct ArchitectureVisualizationApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainContentView()
         }
     }
 }
 
-struct ContentView: View {
+struct MainContentView: View {
+    @StateObject private var fileLoader = FileLoader.shared
     
-    // MARK: - StateObject
-    @StateObject private var fileLoader = FileLoader()
-    
-    // MARK: - States
     @State private var isDownloadButtonHidden = false
     @State private var shouldShowNotGrantedAccessToFilesAlert = false
 
@@ -32,32 +22,28 @@ struct ContentView: View {
             if !isDownloadButtonHidden {
                 Button("Загрузить проект") {
                     fileLoader.requestPermissions { granted in
-                        guard granted else {
+                        if granted {
+                            isDownloadButtonHidden = true
+                        } else {
                             shouldShowNotGrantedAccessToFilesAlert = true
-                            return
                         }
-                        isDownloadButtonHidden = true
                     }
                 }
                 .alert("Нет доступа к файлам", isPresented: $shouldShowNotGrantedAccessToFilesAlert) {
-                    Button("Закрыть", role: .cancel) { }
+                    Button("Закрыть", role: .cancel) {}
                 }
                 .padding()
             }
 
-            if let rootNode = fileLoader.rootNode {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(alignment: .top) {
-                        DiagramView(fileLoader: fileLoader)
-                    }
-                    .padding()
-                }
+            if !fileLoader.swiftNodes.isEmpty {
+                DiagramView(fileLoader: fileLoader)
             } else {
-                Text("Выберите папку с проектом")
-                    .font(.title2)
+                Spacer()
+                Text("Загрузите проект, чтобы увидеть архитектуру")
                     .foregroundColor(.gray)
-                    .padding()
+                Spacer()
             }
         }
+        .padding()
     }
 }

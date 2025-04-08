@@ -1,13 +1,32 @@
-//
-//  PodView.swift
-//  ArchitectureVisualization
-//
-//  Created by Полина Рыфтина on 12.02.2025.
-//
-
+import AppKit
 import SwiftUI
 
-struct PodView: View {
+struct AllPodsView: View {
+    @ObservedObject var fileLoader: FileLoader
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("CocoaPods")
+                .font(.headline)
+                .foregroundColor(.white)
+                .padding()
+
+            ForEach(fileLoader.pods, id: \.name) { pod in
+                HStack {
+                    PodView(pod: pod)
+                }
+                .padding(6)
+                .background(Color.blue.opacity(0.2))
+                .cornerRadius(8)
+            }
+        }
+        .padding()
+        .background(Color.blue.opacity(0.1))
+        .cornerRadius(12)
+    }
+}
+
+private struct PodView: View {
     let pod: PodNode
 
     var body: some View {
@@ -16,7 +35,7 @@ struct PodView: View {
                 .font(.headline)
                 .foregroundColor(.blue)
 
-            Text("v\(pod.version)")
+            Text("\(pod.version)")
                 .font(.subheadline)
                 .foregroundColor(.gray)
         }
@@ -26,4 +45,3 @@ struct PodView: View {
         .shadow(radius: 3)
     }
 }
-
