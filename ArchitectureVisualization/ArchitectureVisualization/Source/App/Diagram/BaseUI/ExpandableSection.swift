@@ -1,14 +1,10 @@
 import SwiftUI
 
-struct ExpandableSection<Content: View>: View {
+struct ExpandableSection<Data: RandomAccessCollection, Content: View>: View where Data.Element: Identifiable {
     @State private var isExpanded = false
     let title: String
-    let content: Content
-
-    init(title: String, @ViewBuilder content: () -> Content) {
-        self.title = title
-        self.content = content()
-    }
+    let data: Data
+    let content: (Data.Element) -> Content
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -35,7 +31,9 @@ struct ExpandableSection<Content: View>: View {
 
             if isExpanded {
                 VStack(alignment: .leading, spacing: 6) {
-                    content
+                    ForEach(data) { element in
+                        content(element)
+                    }
                 }
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 14).fill(Color(white: 0.96)))

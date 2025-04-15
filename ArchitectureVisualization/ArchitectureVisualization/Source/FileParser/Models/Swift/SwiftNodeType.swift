@@ -1,8 +1,9 @@
 import Foundation
 
-enum SwiftNodeType: String, Equatable, Hashable {
+enum SwiftNodeType: String, Codable {
+    case `class`
     case `struct`
     case `enum`
-    case `class`
-    case `unknown`
+    case protocolType
+    case unknown
 }

@@ -8,10 +8,10 @@ enum ReferenceStrength: String, Equatable, Hashable {
 
 struct SwiftRelationship: Identifiable, Hashable {
     enum RelationshipType: Hashable {
-        case aggregation  // Связь через переменную (value types)
-        case composition  // Создается внутри класса
-        case inheritance  // Наследование или реализация протокола
-        case reference(strength: ReferenceStrength) // Ссылочный тип
+        case aggregation
+        case composition
+        case inheritance
+        case reference(strength: ReferenceStrength)
     }
 
     let id = UUID()
@@ -23,23 +23,12 @@ struct SwiftRelationship: Identifiable, Hashable {
 extension SwiftRelationship {
     static func from(ast: ASTNode, parent: String) -> [SwiftRelationship] {
         switch ast {
-        case let .property(name, type):
-            let lowerName = name.lowercased()
-            let strength: ReferenceStrength
+        case let .property(_, type):
+            return [SwiftRelationship(from: parent, to: type, type: .reference(strength: .strong))]
 
-            if lowerName.contains("weak") {
-                strength = .weak
-            } else if lowerName.contains("unowned") {
-                strength = .unowned
-            } else {
-                strength = .strong
-            }
-
-            return [SwiftRelationship(from: parent, to: type, type: .reference(strength: strength))]
-
-        case let .function(_, _, parameters):
-            return parameters.map {
-                SwiftRelationship(from: parent, to: $0.1, type: .aggregation)
+        case let .function(_, parameters, _):
+            return parameters.map { param in
+                SwiftRelationship(from: parent, to: param.type, type: .aggregation)
             }
 
         default:

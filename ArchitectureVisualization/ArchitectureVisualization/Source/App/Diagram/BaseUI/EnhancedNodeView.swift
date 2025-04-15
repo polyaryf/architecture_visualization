@@ -17,31 +17,27 @@ struct EnhancedNodeView: View {
             Divider()
 
             if !node.properties.isEmpty {
-                ExpandableSection(title: "Properties") {
-                    ForEach(node.properties, id: \.id) { property in
-                        Label(property.name, systemImage: "p.circle")
-                            .foregroundColor(.gray)
-                    }
+                ExpandableSection(title: "Properties", data: node.properties) { property in
+                    Label(property.name, systemImage: "p.circle")
+                        .foregroundColor(.gray)
                 }
             }
 
             if !node.functions.isEmpty {
-                ExpandableSection(title: "Functions") {
-                    ForEach(node.functions, id: \.id) { function in
-                        Label(function.name, systemImage: "f.cursive")
-                            .foregroundColor(.gray)
-                    }
+                ExpandableSection(title: "Functions", data: node.functions) { function in
+                    Label(function.name, systemImage: "f.cursive")
+                        .foregroundColor(.gray)
                 }
             }
 
             if !node.conformsTo.isEmpty {
-                ExpandableSection(title: "Conforms To") {
-                    ForEach(node.conformsTo, id: \.self) { protocolName in
-                        Label(protocolName, systemImage: "checkmark.shield")
-                            .foregroundColor(.blue)
-                    }
+                ExpandableSection(title: "Conforms To", data: node.conformsTo.map { IdentifiableString(id: $0, value: $0) }) { protocolName in
+                    Label(protocolName.value, systemImage: "checkmark.shield")
+                        .foregroundColor(.blue)
                 }
             }
+
+
         }
         .padding()
         .background(RoundedRectangle(cornerRadius: 20).fill(Color.white))
@@ -69,4 +65,9 @@ struct EnhancedNodeView: View {
         default: return .gray
         }
     }
+}
+
+struct IdentifiableString: Identifiable {
+    let id: String
+    let value: String
 }

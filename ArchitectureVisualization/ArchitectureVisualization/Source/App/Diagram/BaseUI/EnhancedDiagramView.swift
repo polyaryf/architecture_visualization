@@ -12,13 +12,17 @@ struct EnhancedDiagramView: View {
     var body: some View {
         GeometryReader { geometry in
             let layout = generateLayout(from: fileLoader.swiftNodes, in: geometry)
+
             ScrollView([.horizontal, .vertical], showsIndicators: false) {
                 ZStack {
                     if !fileLoader.pods.isEmpty {
                         AllPodsView(fileLoader: fileLoader)
                             .position(x: -100, y: -100)
                     }
+
                     Color.clear
+
+                    // Узлы (ноды)
                     ZStack {
                         ForEach(fileLoader.swiftNodes) { node in
                             EnhancedNodeView(node: node)
@@ -38,34 +42,45 @@ struct EnhancedDiagramView: View {
                         }
                     }
 
-                    // 🎯 Стрелки
+                    // Стрелки
                     if !nodeFrames.isEmpty {
                         Canvas { context, _ in
                             let graph = GraphBuilder.build(from: fileLoader.swiftNodes)
+                            print("Graph nodes: \(graph.keys)")
+                            let cellSize = calculateDynamicCellSize(from: nodeFrames, in: geometry.size)
+                            let nodeGridPositions = calculateNodeGridPositions(nodeFrames: nodeFrames, cellSize: cellSize)
 
                             for (from, edges) in graph {
-                                guard let fromFrame = nodeFrames[from] else { continue }
-                                let fromPoint = CGPoint(x: fromFrame.maxX, y: fromFrame.midY)
+                                guard let fromGrid = nodeGridPositions[from] else { continue }
 
                                 for edge in edges {
-                                    guard let toFrame = nodeFrames[edge.to] else { continue }
-                                    let toPoint = CGPoint(x: toFrame.minX, y: toFrame.midY)
+                                    guard let toGrid = nodeGridPositions[edge.to] else { continue }
 
-                                    let arrow = UMLArrowPath(start: fromPoint, end: toPoint, type: edge.type)
+                                    let pathPoints = manhattanPath(from: fromGrid, to: toGrid)
+
+                                    var path = Path()
+                                    if let startPoint = pathPoints.first {
+                                        path.move(to: pointForGridPosition(startPoint, cellSize: cellSize))
+
+                                        for gridPoint in pathPoints.dropFirst() {
+                                            path.addLine(to: pointForGridPosition(gridPoint, cellSize: cellSize))
+                                        }
+                                    }
+
                                     let isHighlighted = selectedNode == nil || selectedNode == from || selectedNode == edge.to
-                                    let color = isHighlighted ? arrow.color : arrow.color.opacity(0.2)
-                                    let style = isHighlighted ? arrow.style : StrokeStyle(lineWidth: 1, dash: [2, 6])
+                                    let color = isHighlighted ? colorForRelationship(edge.type) : colorForRelationship(edge.type).opacity(0.2)
+                                    let style = isHighlighted ? styleForRelationship(edge.type) : StrokeStyle(lineWidth: 1, dash: [2, 6])
 
-                                    context.stroke(arrow.path, with: .color(color), style: style)
+                                    context.stroke(path, with: .color(color), style: style)
                                 }
                             }
                         }
-                        .frame(width: 3000, height: 3000)
+                        .frame(width: geometry.size.width * 2, height: geometry.size.height * 2)
                         .scaleEffect(scale)
                         .offset(x: offset.width + gestureOffset.width, y: offset.height + gestureOffset.height)
                     }
                 }
-                .frame(width: 3000, height: 3000)
+                .frame(width: geometry.size.width * 2, height: geometry.size.height * 2)
                 .scaleEffect(scale)
                 .offset(x: offset.width + gestureOffset.width, y: offset.height + gestureOffset.height)
                 .gesture(
@@ -88,7 +103,55 @@ struct EnhancedDiagramView: View {
             .coordinateSpace(name: "diagramSpace")
         }
     }
+
+    // MARK: - Utils
+
+    private func pointForGridPosition(_ position: GridPosition, cellSize: CGSize) -> CGPoint {
+        CGPoint(
+            x: CGFloat(position.column) * cellSize.width + cellSize.width / 2,
+            y: CGFloat(position.row) * cellSize.height + cellSize.height / 2
+        )
+    }
+
+    private func calculateDynamicCellSize(from frames: [String: CGRect], in containerSize: CGSize) -> CGSize {
+        // Приблизительный размер клетки исходя из средней ширины/высоты узлов
+        let totalNodes = frames.count
+        let estimatedColumns = max(Int(containerSize.width / 300), 2)
+        let estimatedRows = max(totalNodes / estimatedColumns, 2)
+
+        let width = containerSize.width / CGFloat(estimatedColumns)
+        let height = containerSize.height / CGFloat(estimatedRows)
+
+        return CGSize(width: width, height: height)
+    }
+
+    private func calculateNodeGridPositions(nodeFrames: [String: CGRect], cellSize: CGSize) -> [String: GridPosition] {
+        var positions: [String: GridPosition] = [:]
+        for (name, frame) in nodeFrames {
+            positions[name] = frame.gridPosition(cellSize: cellSize)
+        }
+        return positions
+    }
+
+    private func manhattanPath(from start: GridPosition, to end: GridPosition) -> [GridPosition] {
+        var path: [GridPosition] = []
+        var current = start
+
+        while current.column != end.column {
+            current = GridPosition(row: current.row, column: current.column + (current.column < end.column ? 1 : -1))
+            path.append(current)
+        }
+
+        while current.row != end.row {
+            current = GridPosition(row: current.row + (current.row < end.row ? 1 : -1), column: current.column)
+            path.append(current)
+        }
+
+        return path
+    }
 }
+
+// MARK: - Layout Calculation
 
 func generateLayout(from nodes: [SwiftNode], in geometry: GeometryProxy) -> [String: CGPoint] {
     let nodeWidth: CGFloat = 400
@@ -112,4 +175,40 @@ func generateLayout(from nodes: [SwiftNode], in geometry: GeometryProxy) -> [Str
     }
 
     return layout
+}
+
+// MARK: - Relationship Styling
+
+func colorForRelationship(_ type: RelationshipArrow) -> Color {
+    switch type {
+    case .inheritance:
+        return .black
+    case .composition:
+        return .brown
+    case .aggregation:
+        return .gray
+    case .referenceStrong:
+        return .blue
+    case .referenceWeak:
+        return .orange
+    case .referenceUnowned:
+        return .red
+    }
+}
+
+func styleForRelationship(_ type: RelationshipArrow) -> StrokeStyle {
+    switch type {
+    case .inheritance:
+        return StrokeStyle(lineWidth: 2)
+    case .composition:
+        return StrokeStyle(lineWidth: 2)
+    case .aggregation:
+        return StrokeStyle(lineWidth: 1.5, dash: [4, 4])
+    case .referenceStrong:
+        return StrokeStyle(lineWidth: 1.5)
+    case .referenceWeak:
+        return StrokeStyle(lineWidth: 1.2, dash: [2, 4])
+    case .referenceUnowned:
+        return StrokeStyle(lineWidth: 1.2, dash: [1, 3])
+    }
 }

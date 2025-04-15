@@ -17,6 +17,14 @@
 		296636252D5C7A41006F7E02 /* FileTypeStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296636242D5C7A41006F7E02 /* FileTypeStrategy.swift */; };
 		2966362D2D5CCC3F006F7E02 /* PodNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966362C2D5CCC3F006F7E02 /* PodNode.swift */; };
 		2966362F2D5CCD3F006F7E02 /* PodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966362E2D5CCD3F006F7E02 /* PodView.swift */; };
+		297A78122DA59D8E0016B7D1 /* GridPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297A78112DA59D8E0016B7D1 /* GridPosition.swift */; };
+		297A78142DA5A3520016B7D1 /* ASTNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297A78132DA5A3520016B7D1 /* ASTNode.swift */; };
+		297A78162DA6A4190016B7D1 /* SwiftBasicFormat in Frameworks */ = {isa = PBXBuildFile; productRef = 297A78152DA6A4190016B7D1 /* SwiftBasicFormat */; };
+		297A78182DA6A4190016B7D1 /* SwiftCompilerPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 297A78172DA6A4190016B7D1 /* SwiftCompilerPlugin */; };
+		297A781A2DA6A4190016B7D1 /* SwiftDiagnostics in Frameworks */ = {isa = PBXBuildFile; productRef = 297A78192DA6A4190016B7D1 /* SwiftDiagnostics */; };
+		297A781C2DA6A4190016B7D1 /* SwiftIDEUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 297A781B2DA6A4190016B7D1 /* SwiftIDEUtils */; };
+		297A781E2DA6A4190016B7D1 /* SwiftOperators in Frameworks */ = {isa = PBXBuildFile; productRef = 297A781D2DA6A4190016B7D1 /* SwiftOperators */; };
+		297A78202DA6D1800016B7D1 /* BuildRelationships+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297A781F2DA6D1800016B7D1 /* BuildRelationships+Helper.swift */; };
 		297DADF22D2E832700C2A83A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 297DADF12D2E832700C2A83A /* Assets.xcassets */; };
 		297DAE002D2E832700C2A83A /* ArchitectureVisualizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297DADFF2D2E832700C2A83A /* ArchitectureVisualizationTests.swift */; };
 		297DAE0A2D2E832700C2A83A /* ArchitectureVisualizationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297DAE092D2E832700C2A83A /* ArchitectureVisualizationUITests.swift */; };
@@ -62,6 +70,9 @@
 		296636242D5C7A41006F7E02 /* FileTypeStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTypeStrategy.swift; sourceTree = "<group>"; };
 		2966362C2D5CCC3F006F7E02 /* PodNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodNode.swift; sourceTree = "<group>"; };
 		2966362E2D5CCD3F006F7E02 /* PodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodView.swift; sourceTree = "<group>"; };
+		297A78112DA59D8E0016B7D1 /* GridPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridPosition.swift; sourceTree = "<group>"; };
+		297A78132DA5A3520016B7D1 /* ASTNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASTNode.swift; sourceTree = "<group>"; };
+		297A781F2DA6D1800016B7D1 /* BuildRelationships+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BuildRelationships+Helper.swift"; sourceTree = "<group>"; };
 		297DADEA2D2E832600C2A83A /* ArchitectureVisualization.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArchitectureVisualization.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		297DADF12D2E832700C2A83A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		297DADF42D2E832700C2A83A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -89,6 +100,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				297A781A2DA6A4190016B7D1 /* SwiftDiagnostics in Frameworks */,
+				297A781C2DA6A4190016B7D1 /* SwiftIDEUtils in Frameworks */,
+				297A78182DA6A4190016B7D1 /* SwiftCompilerPlugin in Frameworks */,
+				297A78162DA6A4190016B7D1 /* SwiftBasicFormat in Frameworks */,
+				297A781E2DA6A4190016B7D1 /* SwiftOperators in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,12 +187,21 @@
 		296636232D5BDD25006F7E02 /* Diagram */ = {
 			isa = PBXGroup;
 			children = (
+				297A78102DA59D840016B7D1 /* Grid */,
 				291F64F22D91DA8D00598942 /* BaseUI */,
 				296636162D592D73006F7E02 /* DiagramView.swift */,
 				296636192D5A620F006F7E02 /* UMLArrowView.swift */,
 				2966361D2D5A632F006F7E02 /* UMLControlPanel.swift */,
 			);
 			path = Diagram;
+			sourceTree = "<group>";
+		};
+		297A78102DA59D840016B7D1 /* Grid */ = {
+			isa = PBXGroup;
+			children = (
+				297A78112DA59D8E0016B7D1 /* GridPosition.swift */,
+			);
+			path = Grid;
 			sourceTree = "<group>";
 		};
 		297DADE12D2E832600C2A83A = {
@@ -240,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				29C7113C2D99638A002111CC /* GraphBuilder.swift */,
+				297A781F2DA6D1800016B7D1 /* BuildRelationships+Helper.swift */,
 			);
 			path = GraphBuilder;
 			sourceTree = "<group>";
@@ -249,6 +275,7 @@
 			children = (
 				29D1F0332D8AE53E0089743A /* SwiftNode.swift */,
 				2966362C2D5CCC3F006F7E02 /* PodNode.swift */,
+				297A78132DA5A3520016B7D1 /* ASTNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -289,6 +316,13 @@
 			dependencies = (
 			);
 			name = ArchitectureVisualization;
+			packageProductDependencies = (
+				297A78152DA6A4190016B7D1 /* SwiftBasicFormat */,
+				297A78172DA6A4190016B7D1 /* SwiftCompilerPlugin */,
+				297A78192DA6A4190016B7D1 /* SwiftDiagnostics */,
+				297A781B2DA6A4190016B7D1 /* SwiftIDEUtils */,
+				297A781D2DA6A4190016B7D1 /* SwiftOperators */,
+			);
 			productName = ArchitectureVisualization;
 			productReference = 297DADEA2D2E832600C2A83A /* ArchitectureVisualization.app */;
 			productType = "com.apple.product-type.application";
@@ -410,6 +444,7 @@
 				29C7113A2D9961F2002111CC /* EnhancedDiagramView.swift in Sources */,
 				2966362F2D5CCD3F006F7E02 /* PodView.swift in Sources */,
 				296636172D592D73006F7E02 /* DiagramView.swift in Sources */,
+				297A78202DA6D1800016B7D1 /* BuildRelationships+Helper.swift in Sources */,
 				2966362D2D5CCC3F006F7E02 /* PodNode.swift in Sources */,
 				29C711412D997490002111CC /* SwiftRelationship.swift in Sources */,
 				29D1F0342D8AE53E0089743A /* SwiftNode.swift in Sources */,
@@ -418,8 +453,10 @@
 				2966361A2D5A620F006F7E02 /* UMLArrowView.swift in Sources */,
 				296636252D5C7A41006F7E02 /* FileTypeStrategy.swift in Sources */,
 				29C7113D2D99638A002111CC /* GraphBuilder.swift in Sources */,
+				297A78122DA59D8E0016B7D1 /* GridPosition.swift in Sources */,
 				298974B82D998FD70018DA18 /* NodeGeometryReader.swift in Sources */,
 				29D1F0362D8AE5E00089743A /* SwiftProperty.swift in Sources */,
+				297A78142DA5A3520016B7D1 /* ASTNode.swift in Sources */,
 				2966360B2D59178D006F7E02 /* ArchitectureVisualizationApp.swift in Sources */,
 				291F64F82D93319200598942 /* Parser+Helper.swift in Sources */,
 				29C711382D9961C5002111CC /* EnhancedNodeView.swift in Sources */,
@@ -767,6 +804,34 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		297A78152DA6A4190016B7D1 /* SwiftBasicFormat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29C711342D94561B002111CC /* XCRemoteSwiftPackageReference "swift-syntax" */;
+			productName = SwiftBasicFormat;
+		};
+		297A78172DA6A4190016B7D1 /* SwiftCompilerPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29C711342D94561B002111CC /* XCRemoteSwiftPackageReference "swift-syntax" */;
+			productName = SwiftCompilerPlugin;
+		};
+		297A78192DA6A4190016B7D1 /* SwiftDiagnostics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29C711342D94561B002111CC /* XCRemoteSwiftPackageReference "swift-syntax" */;
+			productName = SwiftDiagnostics;
+		};
+		297A781B2DA6A4190016B7D1 /* SwiftIDEUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29C711342D94561B002111CC /* XCRemoteSwiftPackageReference "swift-syntax" */;
+			productName = SwiftIDEUtils;
+		};
+		297A781D2DA6A4190016B7D1 /* SwiftOperators */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29C711342D94561B002111CC /* XCRemoteSwiftPackageReference "swift-syntax" */;
+			productName = SwiftOperators;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 297DADE22D2E832600C2A83A /* Project object */;
 }
