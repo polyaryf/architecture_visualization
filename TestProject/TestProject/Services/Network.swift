@@ -7,3 +7,4 @@ class Network: INetwork {
         return Data()
     }
 }
+

@@ -1,138 +1,140 @@
-//
-//  parser.swift
-//  ArchitectureVisualization
-//
-//  Created by Полина Рыфтина on 25.03.2025.
-//
-
 import Foundation
+import SwiftSyntax
+import SwiftParser
 
-func getSwiftFiles(in directory: String) -> [String] {
-    let fileManager = FileManager.default
-    var swiftFiles: [String] = []
+func parseSwiftFiles(fileContents: [String]) -> [SwiftNode] {
+    let astNodes = fileContents.flatMap { parseSwiftFile($0) }
 
-    if let enumerator = fileManager.enumerator(atPath: directory) {
-        for case let file as String in enumerator {
-            if file.hasSuffix(".swift") {
-                swiftFiles.append((directory as NSString).appendingPathComponent(file))
-            }
-        }
-    }
-
-    return swiftFiles
-}
-
-enum ASTNode {
-    case `class`(name: String, inherits: [String], members: [ASTNode])
-    case `struct`(name: String, members: [ASTNode])
-    case `enum`(name: String, cases: [String])
-    case `protocol`(name: String, inherits: [String])
-    case property(name: String, type: String)
-    case function(name: String, returnType: String, parameters: [(String, String)])
-}
-
-func parseSwiftFile(_ code: String) -> [ASTNode] {
-    var nodes: [ASTNode] = []
-
-    let classPattern = "class\\s+(\\w+)(?::\\s*([\\w, ]+))?\\s*\\{"
-    let structPattern = "struct\\s+(\\w+)\\s*\\{"
-    let protocolPattern = "protocol\\s+(\\w+)(?::\\s*([\\w, ]+))?"
-    let enumPattern = "enum\\s+(\\w+)\\s*\\{"
-    let propertyPattern = "(let|var)\\s+(\\w+)\\s*:\\s*([\\w<>, ]+)"
-    let functionPattern = "func\\s+(\\w+)\\s*\\(([^)]*)\\)\\s*(?:->\\s*([\\w<>, ]+))?"
-
-    let nsCode = code as NSString
-    let fullRange = NSRange(location: 0, length: nsCode.length)
-
-    func extractMembers(from body: String) -> [ASTNode] {
-        var members: [ASTNode] = []
-        let nsBody = body as NSString
-        let bodyRange = NSRange(location: 0, length: nsBody.length)
-
-        // Properties
-        let propRegex = try! NSRegularExpression(pattern: propertyPattern)
-        for match in propRegex.matches(in: body, range: bodyRange) {
-            let name = nsBody.substring(with: match.range(at: 2))
-            let type = nsBody.substring(with: match.range(at: 3))
-            members.append(.property(name: name, type: type))
-        }
-
-        // Functions
-        let funcRegex = try! NSRegularExpression(pattern: functionPattern)
-        for match in funcRegex.matches(in: body, range: bodyRange) {
-            let name = nsBody.substring(with: match.range(at: 1))
-            let paramsString = nsBody.substring(with: match.range(at: 2))
-            let returnType = match.range(at: 3).location != NSNotFound ? nsBody.substring(with: match.range(at: 3)) : "Void"
-
-            let params: [(String, String)] = paramsString.split(separator: ",").compactMap {
-                let parts = $0.split(separator: ":").map { $0.trimmingCharacters(in: .whitespaces) }
-                return parts.count == 2 ? (parts[0], parts[1]) : nil
-            }
-
-            members.append(.function(name: name, returnType: returnType, parameters: params))
-        }
-
-        return members
-    }
-
-    // Classes
-    let classRegex = try! NSRegularExpression(pattern: classPattern)
-    for match in classRegex.matches(in: code, range: fullRange) {
-        let name = nsCode.substring(with: match.range(at: 1))
-        let inherits = match.range(at: 2).location != NSNotFound ? nsCode.substring(with: match.range(at: 2)).components(separatedBy: ", ") : []
-        let bodyStart = match.range.location + match.range.length
-        let body = extractBody(from: code, startingAt: bodyStart)
-        nodes.append(.class(name: name, inherits: inherits, members: extractMembers(from: body)))
-    }
-
-    // Structs
-    let structRegex = try! NSRegularExpression(pattern: structPattern)
-    for match in structRegex.matches(in: code, range: fullRange) {
-        let name = nsCode.substring(with: match.range(at: 1))
-        let bodyStart = match.range.location + match.range.length
-        let body = extractBody(from: code, startingAt: bodyStart)
-        nodes.append(.struct(name: name, members: extractMembers(from: body)))
-    }
-
-    // Enums
-    let enumRegex = try! NSRegularExpression(pattern: enumPattern)
-    for match in enumRegex.matches(in: code, range: fullRange) {
-        let name = nsCode.substring(with: match.range(at: 1))
-        let bodyStart = match.range.location + match.range.length
-        let body = extractBody(from: code, startingAt: bodyStart)
-        let cases = body.components(separatedBy: .newlines).compactMap { line -> String? in
-            if line.trimmingCharacters(in: .whitespaces).hasPrefix("case ") {
-                return line.trimmingCharacters(in: .whitespaces).replacingOccurrences(of: "case ", with: "")
-            }
+    var preliminaryNodes: [SwiftNode] = astNodes.compactMap { ast in
+        switch ast {
+        case .class, .struct, .protocol:
+            return SwiftNode(from: ast, allNodes: [])
+        default:
             return nil
         }
-        nodes.append(.enum(name: name, cases: cases))
     }
 
-    // Protocols
-    let protocolRegex = try! NSRegularExpression(pattern: protocolPattern)
-    for match in protocolRegex.matches(in: code, range: fullRange) {
-        let name = nsCode.substring(with: match.range(at: 1))
-        let inherits = match.range(at: 2).location != NSNotFound ? nsCode.substring(with: match.range(at: 2)).components(separatedBy: ", ") : []
-        nodes.append(.protocol(name: name, inherits: inherits))
+    preliminaryNodes = preliminaryNodes.map { node in
+        SwiftNode(
+            name: node._name,
+            type: node.type,
+            conformsTo: node.conformsTo,
+            properties: node.properties,
+            functions: node.functions,
+            relationships: buildRelationships(for: node, in: preliminaryNodes)
+        )
     }
 
-    return nodes
+    return preliminaryNodes
 }
 
-private func extractBody(from code: String, startingAt index: Int) -> String {
-    var depth = 1
-    var body = ""
-    let lowerBound = code.index(code.startIndex, offsetBy: index)
-    let chars = Array(code[lowerBound..<code.endIndex])
+func parseSwiftFile(_ content: String) -> [ASTNode] {
+    let sourceFile = Parser.parse(source: content)
+    let visitor = SwiftASTVisitor(viewMode: .sourceAccurate)
+    visitor.walk(sourceFile)
+    return visitor.astNodes
+}
 
-    for c in chars {
-        if c == "{" { depth += 1 }
-        else if c == "}" { depth -= 1 }
+class SwiftASTVisitor: SyntaxVisitor {
+    var astNodes: [ASTNode] = []
 
-        if depth == 0 { break }
-        body.append(c)
+    private var currentClassName: String?
+    private var currentStructName: String?
+    private var currentProtocolName: String?
+    private var currentMembers: [ASTNode] = []
+
+    override func visit(_ node: ClassDeclSyntax) -> SyntaxVisitorContinueKind {
+        currentClassName = node.identifier.text
+        currentMembers = []
+
+        let inherits = node.inheritanceClause?.inheritedTypes.map {
+            $0.type.trimmedDescription
+        } ?? []
+
+        defer {
+            if let name = currentClassName {
+                astNodes.append(.class(name: name, inherits: inherits, members: currentMembers))
+            }
+            currentClassName = nil
+            currentMembers = []
+        }
+
+        return .visitChildren
     }
 
-    return body
+    override func visit(_ node: StructDeclSyntax) -> SyntaxVisitorContinueKind {
+        currentStructName = node.identifier.text
+        currentMembers = []
+
+        defer {
+            if let name = currentStructName {
+                astNodes.append(.struct(name: name, members: currentMembers))
+            }
+            currentStructName = nil
+            currentMembers = []
+        }
+
+        return .visitChildren
+    }
+
+    override func visit(_ node: ProtocolDeclSyntax) -> SyntaxVisitorContinueKind {
+        currentProtocolName = node.identifier.text
+        currentMembers = []
+
+        let inherits = node.inheritanceClause?.inheritedTypes.map {
+            $0.type.trimmedDescription
+        } ?? []
+
+        defer {
+            if let name = currentProtocolName {
+                astNodes.append(.protocol(name: name, inherits: inherits, members: currentMembers))
+            }
+            currentProtocolName = nil
+            currentMembers = []
+        }
+
+        return .visitChildren
+    }
+
+    override func visit(_ node: VariableDeclSyntax) -> SyntaxVisitorContinueKind {
+        guard let binding = node.bindings.first,
+              let pattern = binding.pattern.as(IdentifierPatternSyntax.self),
+              let typeAnnotation = binding.typeAnnotation else { return .skipChildren }
+
+        let propertyName = pattern.identifier.text
+        let propertyType = typeAnnotation.type.trimmedDescription
+
+        let propertyNode: ASTNode = .property(name: propertyName, type: propertyType)
+
+        if currentClassName != nil || currentStructName != nil || currentProtocolName != nil {
+            currentMembers.append(propertyNode)
+        }
+
+        return .skipChildren
+    }
+
+    override func visit(_ node: FunctionDeclSyntax) -> SyntaxVisitorContinueKind {
+        let functionName = node.identifier.text
+        let returnType = node.signature.output?.returnType.trimmedDescription ?? "Void"
+
+        let parameters = node.signature.input.parameterList.map { param in
+            let paramName = param.firstName.text.isEmpty ? "_" : param.firstName.text
+            let paramType = param.type.trimmedDescription ?? "Unknown"
+            return (name: paramName, type: paramType)
+        }
+
+        let functionNode: ASTNode = .function(name: functionName, parameters: parameters, returnType: returnType)
+
+        if currentClassName != nil || currentStructName != nil || currentProtocolName != nil {
+            currentMembers.append(functionNode)
+        }
+
+        return .skipChildren
+    }
+}
+
+private extension TypeSyntax {
+    var trimmedDescription: String {
+        self.description.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
 }

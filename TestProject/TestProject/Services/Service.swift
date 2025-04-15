@@ -4,7 +4,7 @@
             
 class Service: IService {
     
-    private let network: INetwork
+    private var network: INetwork
 
     init(network: INetwork) {
         self.network = network
@@ -12,3 +12,5 @@ class Service: IService {
 
     func processData() {}
 }
+
+

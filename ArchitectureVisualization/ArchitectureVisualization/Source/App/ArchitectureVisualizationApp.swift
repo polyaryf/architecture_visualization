@@ -12,7 +12,7 @@ struct ArchitectureVisualizationApp: App {
 }
 
 struct MainContentView: View {
-    @StateObject private var fileLoader = FileLoader.shared
+    @StateObject private var fileLoader = FileLoader()
     
     @State private var isDownloadButtonHidden = false
     @State private var shouldShowNotGrantedAccessToFilesAlert = false

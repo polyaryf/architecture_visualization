@@ -1,37 +1,44 @@
 import Foundation
 
-protocol FileTypeStrategy {
-    func determineAllSwiftNodsType(for url: URL) -> [SwiftNode]
-}
+struct FileTypeStrategy {
+    /// Считывает все SwiftNodes из массива файлов проекта без построения связей
+    static func extractPreliminaryNodes(from projectfilesURLs: [URL]) -> [SwiftNode] {
+        var preliminaryNodes: [SwiftNode] = []
 
-class SwiftFileStrategy: FileTypeStrategy {
+        for fileURL in projectfilesURLs {
+            if fileURL.hasDirectoryPath, fileURL.lastPathComponent != "Pods" {
+                preliminaryNodes.append(contentsOf: extractSwiftNodes(from: fileURL))
+            } else if fileURL.pathExtension == "swift" {
+                guard let content = try? String(contentsOf: fileURL) else { continue }
+                let swiftNodes = SwiftNode.nodes(from: content, allNodes: []) // allNodes пустой на этом этапе
+                preliminaryNodes.append(contentsOf: swiftNodes)
+            }
+        }
 
-    private let excludedExtensions: Set<String> = [
-        ".pbxproj", ".xcodeproj", ".lock", ".xcworkspace",
-    ]
-
-    private func precheck(for url: URL) -> Bool {
-        !excludedExtensions.contains(url.pathExtension.lowercased())
-        || isNotXcodeProjFolder(url)
-        || isNotPodFile(url)
+        return preliminaryNodes
     }
 
-    func determineAllSwiftNodsType(for url: URL) -> [SwiftNode] {
-        guard precheck(for: url),
-              !url.hasDirectoryPath,
-              url.pathExtension == "swift",
-              let content = try? String(contentsOf: url)
-        else { return [] }
+    /// Рекурсивно обходит директорию и собирает Swift файлы
+    private static func extractSwiftNodes(from directoryURL: URL) -> [SwiftNode] {
+        var swiftNodes: [SwiftNode] = []
 
-        return SwiftNode.nodes(from: content)
-    }
+        guard let enumerator = FileManager.default.enumerator(at: directoryURL, includingPropertiesForKeys: nil) else {
+            return []
+        }
 
-    private func isNotXcodeProjFolder(_ url: URL) -> Bool {
-        !url.lastPathComponent.lowercased().hasSuffix(".xcodeproj")
-    }
+        for case let fileURL as URL in enumerator {
+            if fileURL.lastPathComponent == "Pods" {
+                enumerator.skipDescendants()
+                continue
+            }
 
-    private func isNotPodFile(_ url: URL) -> Bool {
-        !url.lastPathComponent.contains("Podfile")
-        || !url.lastPathComponent.contains("Gemfile")
+            if fileURL.pathExtension == "swift" {
+                guard let content = try? String(contentsOf: fileURL) else { continue }
+                let nodes = SwiftNode.nodes(from: content, allNodes: []) // также пустой массив
+                swiftNodes.append(contentsOf: nodes)
+            }
+        }
+
+        return swiftNodes
     }
 }
